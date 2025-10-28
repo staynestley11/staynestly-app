@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trips - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+            --danger-color: #c0392b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        header { background-color: var(--white-color); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px;}
+        .logo { font-size: 26px; font-weight: 700; color: var(--secondary-color); text-decoration: none; }
+        .logo span { color: var(--primary-color); }
+        .user-profile img { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+        .page-header h1 { font-size: 28px; margin-top: 30px; margin-bottom: 30px; }
+        
+        .section-title { font-size: 22px; margin-bottom: 20px; color: var(--secondary-color); }
+
+        /* --- Trip Card --- */
+        .trip-card {
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            display: flex;
+            transition: opacity 0.5s ease;
+        }
+
+        .trip-card img {
+            width: 200px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .trip-details {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trip-details h3 { font-size: 18px; margin: 0 0 5px; }
+        .trip-details .location { font-size: 14px; color: var(--light-text-color); margin-bottom: 15px; }
+
+        .trip-info {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .trip-info p { margin: 0; }
+        .trip-info p strong { display: block; font-size: 13px; color: var(--light-text-color); }
+
+        .card-actions {
+            margin-top: auto; /* Pushes actions to the bottom */
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-secondary { background-color: #ecf0f1; color: var(--secondary-color); }
+        .btn-danger { background-color: #fbeeeeb2; color: var(--danger-color); }
+        
+        /* --- Canceled State --- */
+        .trip-card.canceled {
+            opacity: 0.6;
+        }
+        .trip-card.canceled .card-actions {
+            display: none; /* Hide buttons */
+        }
+        .canceled-badge {
+            font-weight: 700;
+            color: var(--danger-color);
+            margin-top: auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>My Trips</h1>
+        </div>
+
+        <section id="upcoming-trips">
+            <h2 class="section-title">Upcoming Trips</h2>
+            
+            <div class="trip-card">
+                <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6" alt="Property Image">
+                <div class="trip-details">
+                    <h3>Apartment in Lahore</h3>
+                    <p class="location">Lahore, Punjab</p>
+                    <div class="trip-info">
+                        <p><strong>Dates:</strong> <span>Nov 15 - 20, 2025</span></p>
+                        <p><strong>Guests:</strong> <span>2</span></p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="property-details.html" class="btn btn-secondary">View Details</a>
+                        <button class="btn btn-danger btn-cancel">Cancel Trip</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="past-trips" style="margin-top: 50px;">
+            <h2 class="section-title">Past Trips</h2>
+            
+            <div class="trip-card">
+                <img src="https://images.unsplash.com/photo-1613553474176-2c5a27063420" alt="Property Image">
+                <div class="trip-details">
+                    <h3>Mountain View Cabin</h3>
+                    <p class="location">Islamabad, Capital Territory</p>
+                    <div class="trip-info">
+                        <p><strong>Dates:</strong> <span>Sep 05 - 08, 2025</span></p>
+                        <p><strong>Guests:</strong> <span>4</span></p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="property-details.html" class="btn btn-secondary">View Details</a>
+                        <a href="#" class="btn btn-secondary">Leave a Review</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trip-card canceled">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" alt="Property Image">
+                <div class="trip-details">
+                    <h3>Modern City Center Apartment</h3>
+                    <p class="location">Lahore, Punjab</p>
+                    <div class="trip-info">
+                        <p><strong>Dates:</strong> <span>Aug 10 - 12, 2025</span></p>
+                        <p><strong>Guests:</strong> <span>1</span></p>
+                    </div>
+                    <div class="canceled-badge">Canceled</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const upcomingTripsContainer = document.getElementById('upcoming-trips');
+
+            upcomingTripsContainer.addEventListener('click', function(event) {
+                // Check if a cancel button was clicked
+                if (event.target.classList.contains('btn-cancel')) {
+                    const card = event.target.closest('.trip-card');
+
+                    if (confirm('Are you sure you want to cancel this trip? This action cannot be undone.')) {
+                        // 1. Add 'canceled' class to fade the card
+                        card.classList.add('canceled');
+                        
+                        // 2. Find the action buttons container
+                        const actions = card.querySelector('.card-actions');
+                        
+                        // 3. Create the "Canceled" badge
+                        const canceledBadge = document.createElement('div');
+                        canceledBadge.className = 'canceled-badge';
+                        canceledBadge.textContent = 'Canceled';
+                        
+                        // 4. Remove the buttons
+                        actions.innerHTML = '';
+
+                        // 5. Add the new badge in place of the buttons
+                        actions.appendChild(canceledBadge);
+
+                        alert('Your trip has been canceled.');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

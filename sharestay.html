@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a ShareStay Partner - StayNestly</title>
+    <link rel="stylesheet" href="sharestay.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="mybooking.html">My Bookings</a></li>
+                <li><a href="host.html">Become a Host</a></li>
+            </ul>
+            <div class="user-profile">
+                <a href="profile.html"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar"></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="sharestay-layout">
+            <div class="property-details">
+                <div class="property-header">
+                    <h1>Sunny Downtown Studio</h1>
+                    <p><i class="fas fa-map-marker-alt"></i> San Francisco, California</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80" alt="Studio Image" class="main-property-image">
+                <div class="cost-breakdown">
+                    <h3>Cost Breakdown</h3>
+                    <p><span>Total Cost (2 nights):</span><span>$300.00</span></p>
+                    <p class="your-share"><span>Your Share (50%):</span><span>$150.00</span></p>
+                </div>
+            </div>
+
+            <div class="partner-matching">
+                <h2>Find a Partner to Share With</h2>
+                <p class="subtitle">Our AI has found these travelers who are a great match for you.</p>
+
+                <div class="partner-list">
+                    <div class="partner-card">
+                        <img src="https://i.pravatar.cc/150?u=sarah" alt="Partner Avatar">
+                        <div class="partner-info">
+                            <h4>Sarah, 28</h4>
+                            <p>"Quiet professional, loves museums."</p>
+                        </div>
+                        <div class="compatibility-score" title="Based on shared interests and age preferences">95%</div>
+                        <button class="btn-primary invite-btn">Invite to Share</button>
+                    </div>
+                    
+                    <div class="partner-card">
+                        <img src="https://i.pravatar.cc/150?u=mike" alt="Partner Avatar">
+                        <div class="partner-info">
+                            <h4>Mike, 25</h4>
+                            <p>"Adventurous, early riser for hikes."</p>
+                        </div>
+                        <div class="compatibility-score" title="Based on shared interests and age preferences">88%</div>
+                        <button class="btn-primary invite-btn">Invite to Share</button>
+                    </div>
+                </div>
+
+                <div class="divider"><span>OR</span></div>
+                
+                <div class="open-request">
+                    <h3>Don't see a match?</h3>
+                    <p>Send an open request to the host. They will notify you if a suitable partner becomes available.</p>
+                    <button class="btn-secondary open-request-btn">Send Open Request</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="sharestay.js"></script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayNestly - Your Home Away From Home</title>
+    <link rel="stylesheet" href="indexstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">List a Property</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button class="btn btn-secondary">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Find Your Next Perfect Stay</h1>
+                <p>Discover unique homes and experiences, curated for you.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Location (e.g., 'Paris')">
+                    <input type="date" placeholder="Check-in">
+                    <input type="date" placeholder="Check-out">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="share-stay-intro">
+            <div class="container">
+                <h2>Introducing ShareStay 🤝</h2>
+                <p class="intro-text">Travel smarter, not harder. With ShareStay, you can book a private room in a shared space and split the cost with a compatible travel partner. It’s an affordable and social way to explore the world. You can filter potential partners by gender and age to find the perfect match for your trip!</p>
+            </div>
+        </section>
+
+
+        <section class="property-listings">
+            <div class="container">
+                <h2>Featured Properties</h2>
+                <div class="listings-grid">
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2000" alt="Modern Villa">
+                        <div class="card-content">
+                            <h3>Modern Villa with Ocean View</h3>
+                            <p class="location">Malibu, California</p>
+                            <div class="price">$450/night</div>
+                            <button class="btn btn-primary book-now-btn">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2000" alt="Cozy Cabin">
+                        <div class="card-content">
+                            <h3>Cozy Cabin in the Woods</h3>
+                            <p class="location">Aspen, Colorado</p>
+                            <div class="price">$220/night</div>
+                            <button class="btn btn-primary book-now-btn">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000" alt="Urban Apartment">
+                        <div class="card-content">
+                            <h3>Chic Urban Apartment</h3>
+                            <p class="location">New York City, New York</p>
+                            <div class="price">$300/night</div>
+                            <button class="btn btn-primary book-now-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 StayNestly. All rights reserved. Final Year Project.</p>
+        </div>
+    </footer>
+    
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Create an Account to Book</h2>
+            <p>Please log in or sign up to continue with your booking.</p>
+            <div class="modal-buttons">
+                 <button class="btn btn-secondary">Login</button>
+                 <button class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

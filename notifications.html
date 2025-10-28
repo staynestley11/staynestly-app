@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+            --unread-bg: #eafaf1;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary-color); }
+        
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* --- Notifications Page Layout --- */
+        .notifications-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .notifications-header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .mark-all-read {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* --- Notifications List --- */
+        .notifications-list {
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        .notification-item:hover {
+            background-color: #fcfcfc;
+        }
+
+        /* Unread State */
+        .notification-item.unread {
+            background-color: var(--unread-bg);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 16px;
+        }
+
+        .notification-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eafaf1;
+        }
+
+        .notification-content {
+            flex-grow: 1;
+        }
+        .notification-content p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .notification-content .timestamp {
+            font-size: 12px;
+            color: var(--light-text-color);
+            margin-top: 4px;
+        }
+
+        .notification-actions .action-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #3498db; /* Blue dot for unread */
+            border-radius: 50%;
+        }
+
+        .notification-item:not(.unread) .action-dot {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="notifications-header">
+            <h1>Notifications</h1>
+            <button id="mark-all-read" class="mark-all-read">Mark all as read</button>
+        </div>
+
+        <div id="notifications-list" class="notifications-list">
+            <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="notification-content">
+                    <p><strong>Booking Confirmed!</strong> Your booking for 'Apartment in Lahore' from Nov 15 to Nov 20 is confirmed.</p>
+                    <div class="timestamp">5 minutes ago</div>
+                </div>
+                <div class="notification-actions"><div class="action-dot"></div></div>
+            </div>
+
+            <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-comment-dots"></i></div>
+                <div class="notification-content">
+                    <p><strong>New Message:</strong> The host for 'Apartment in Lahore' sent you a message regarding check-in.</p>
+                    <div class="timestamp">1 hour ago</div>
+                </div>
+                <div class="notification-actions"><div class="action-dot"></div></div>
+            </div>
+
+            <div class="notification-item">
+                <div class="notification-icon"><i class="fas fa-undo-alt"></i></div>
+                <div class="notification-content">
+                    <p><strong>Refund Processed:</strong> Your refund request for the booking at 'Mountain View Cabin' has been approved.</p>
+                    <div class="timestamp">1 day ago</div>
+                </div>
+                <div class="notification-actions"><div class="action-dot"></div></div>
+            </div>
+
+            <div class="notification-item">
+                <div class="notification-icon"><i class="fas fa-star"></i></div>
+                <div class="notification-content">
+                    <p><strong>Leave a Review:</strong> How was your stay at 'Mountain View Cabin'? Share your feedback with the community.</p>
+                    <div class="timestamp">3 days ago</div>
+                </div>
+                <div class="notification-actions"><div class="action-dot"></div></div>
+            </div>
+            
+             <div class="notification-item">
+                <div class="notification-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="notification-content">
+                    <p><strong>AI Recommendation:</strong> Based on your recent activity, we found a few stays in Karachi you might like.</p>
+                    <div class="timestamp">4 days ago</div>
+                </div>
+                <div class="notification-actions"><div class="action-dot"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notificationsList = document.getElementById('notifications-list');
+            const markAllReadBtn = document.getElementById('mark-all-read');
+
+            // Mark a single notification as read on click
+            notificationsList.addEventListener('click', function(event) {
+                const clickedItem = event.target.closest('.notification-item');
+                if (clickedItem && clickedItem.classList.contains('unread')) {
+                    clickedItem.classList.remove('unread');
+                }
+            });
+
+            // Mark all notifications as read
+            markAllReadBtn.addEventListener('click', function() {
+                const unreadItems = notificationsList.querySelectorAll('.notification-item.unread');
+                unreadItems.forEach(item => {
+                    item.classList.remove('unread');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

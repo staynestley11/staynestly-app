@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm and Pay - StayNestly</title>
+    <link rel="stylesheet" href="payment.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="payment-header">
+            <h1><i class="fas fa-arrow-left"></i> Confirm and Pay</h1>
+        </div>
+
+        <div class="checkout-layout">
+            <div class="payment-details">
+                <form id="paymentForm">
+                    <h3>Pay with Credit Card</h3>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM / YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardHolder">Card Holder Name</label>
+                        <input type="text" id="cardHolder" placeholder="John Doe" required>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn-primary">Confirm and Pay</button>
+                </form>
+            </div>
+
+            <aside class="booking-summary">
+                <div class="summary-card">
+                    <div class="property-preview">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80" alt="Villa">
+                        <div class="property-info">
+                            <h4>Modern Villa with Ocean View</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> Malibu, California</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3>Price Details</h3>
+                    <div class="price-breakdown">
+                        <p><span>$450 x 4 nights</span><span>$1,800.00</span></p>
+                        <p><span>Service fee</span><span>$252.00</span></p>
+                        <p><span>Taxes</span><span>$108.00</span></p>
+                    </div>
+                    <hr>
+                    <div class="price-total">
+                        <strong>Total (USD)</strong>
+                        <strong>$2,160.00</strong>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="payment.js"></script>
+</body>
+</html>

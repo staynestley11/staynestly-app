@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Settings - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary-color); }
+        
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* --- Settings Layout --- */
+        .page-header h1 {
+            font-size: 28px;
+            margin-top: 30px;
+        }
+
+        .settings-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            align-items: flex-start;
+        }
+
+        /* Sidebar Navigation */
+        .settings-sidebar {
+            flex: 0 0 250px;
+            background-color: var(--white-color);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-nav li a i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: var(--light-text-color);
+            transition: color 0.3s;
+        }
+        
+        .sidebar-nav li a.active,
+        .sidebar-nav li a:hover {
+            background-color: #eafaf1;
+            color: var(--primary-color);
+        }
+        .sidebar-nav li a.active i,
+        .sidebar-nav li a:hover i {
+            color: var(--primary-color);
+        }
+
+        /* Main Content Area */
+        .settings-content {
+            flex: 1;
+        }
+        
+        .content-section {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .section-header h2 { margin: 0; font-size: 22px; }
+        .section-header p { margin: 5px 0 0; color: var(--light-text-color); }
+        
+        /* Form Styling */
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        /* Login Activity */
+        .login-activity-list .device {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .login-activity-list .device:last-child { border-bottom: none; }
+        .device .icon { font-size: 24px; color: var(--light-text-color); }
+        .device-info h4 { font-size: 16px; margin: 0; }
+        .device-info p { font-size: 14px; color: var(--light-text-color); margin: 0; }
+        .device-info .current { color: var(--primary-color); font-weight: 600; }
+
+        .form-actions { margin-top: 30px; }
+        .btn {
+            padding: 12px 25px; border: none; border-radius: 8px; font-size: 15px;
+            font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-primary { background-color: var(--primary-color); color: var(--white-color); }
+        .btn-primary:hover { background-color: #229954; }
+        .btn-secondary { background-color: #ecf0f1; color: var(--secondary-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Account Settings</h1>
+        </div>
+
+        <div class="settings-layout">
+            <aside class="settings-sidebar">
+                <ul class="sidebar-nav">
+                    <li><a href="settings.html"><i class="fas fa-user-cog"></i> Personal Info</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-shield-alt"></i> Security</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#"><i class="fas fa-credit-card"></i> Payments</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Back to Dashboard</a></li>
+                </ul>
+            </aside>
+
+            <main class="settings-content">
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2>Change Password</h2>
+                        <p>For your security, we recommend using a strong password that you don't use elsewhere.</p>
+                    </div>
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+                         <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" required>
+                        </div>
+                         <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2>Login Activity</h2>
+                        <p>This is a list of devices that have logged into your account. Revoke any sessions that you do not recognize.</p>
+                    </div>
+                    <div class="login-activity-list">
+                        <div class="device">
+                            <div class="icon"><i class="fas fa-desktop"></i></div>
+                            <div class="device-info">
+                                <h4>Windows 10 - Sialkot, Pakistan <span class="current">(Current session)</span></h4>
+                                <p>Last logged in: October 17, 2025, 7:15 PM</p>
+                            </div>
+                        </div>
+                        <div class="device">
+                            <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="device-info">
+                                <h4>iPhone 15 - Lahore, Pakistan</h4>
+                                <p>Last logged in: October 15, 2025, 11:20 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary">Log out of all other devices</button>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Password updated successfully!');
+            // Here you would add logic to clear the form fields
+            this.reset();
+        });
+    </script>
+</body>
+</html>

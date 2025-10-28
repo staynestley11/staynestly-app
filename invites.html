@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Invites - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        header { background-color: var(--white-color); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px;}
+        .logo { font-size: 26px; font-weight: 700; color: var(--secondary-color); text-decoration: none; }
+        .logo span { color: var(--primary-color); }
+        .user-profile img { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+        .page-header h1 { font-size: 28px; margin-top: 30px; margin-bottom: 30px; }
+        
+        .section-title { font-size: 22px; margin-bottom: 20px; color: var(--secondary-color); }
+
+        /* --- Invite Card --- */
+        .invite-card {
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .invite-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .invite-info { flex-grow: 1; }
+        .invite-info h3 { font-size: 18px; margin: 0; }
+        .invite-info p { font-size: 14px; color: var(--light-text-color); margin: 4px 0 0; }
+        .invite-info a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-accept { background-color: var(--primary-color); color: var(--white-color); }
+        .btn-decline { background-color: #ecf0f1; color: var(--secondary-color); }
+
+        /* --- Accepted Invites --- */
+        #accepted-invites-container .invite-card {
+            background-color: #eafaf1;
+            border-left: 4px solid var(--primary-color);
+        }
+        #accepted-invites-container .card-actions {
+            display: block;
+            text-align: center;
+        }
+        #accepted-invites-container .connected-status {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .no-invites-message {
+            text-align: center;
+            padding: 40px;
+            color: var(--light-text-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>StayBuddy Invites</h1>
+        </div>
+
+        <section id="pending-invites-container">
+            <h2 class="section-title">Pending Invites</h2>
+            
+            <div class="invite-card">
+                <img src="https://i.pravatar.cc/150?u=aisha" alt="User Avatar">
+                <div class="invite-info">
+                    <h3>Aisha K.</h3>
+                    <p>Wants to connect for a trip to Lahore (Nov 15 - Nov 18). <a href="user-profile.html">View Profile</a></p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-decline">Decline</button>
+                    <button class="btn btn-accept">Accept</button>
+                </div>
+            </div>
+
+            <div class="invite-card">
+                <img src="https://i.pravatar.cc/150?u=bilal" alt="User Avatar">
+                <div class="invite-info">
+                    <h3>Bilal A.</h3>
+                    <p>Wants to connect for a trip to Lahore (Nov 17 - Nov 20). <a href="user-profile.html">View Profile</a></p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-decline">Decline</button>
+                    <button class="btn btn-accept">Accept</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="accepted-invites-container" style="margin-top: 50px;">
+            <h2 class="section-title">Accepted Invites (Your StayBuddies)</h2>
+            <div id="accepted-list">
+                <p id="no-accepted-message" class="no-invites-message">You haven't accepted any invites yet.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pendingContainer = document.getElementById('pending-invites-container');
+            const acceptedList = document.getElementById('accepted-list');
+            const noAcceptedMessage = document.getElementById('no-accepted-message');
+
+            pendingContainer.addEventListener('click', function(event) {
+                const card = event.target.closest('.invite-card');
+                if (!card) return;
+
+                if (event.target.classList.contains('btn-accept')) {
+                    // When 'Accept' is clicked
+                    
+                    // 1. Hide the accept/decline buttons
+                    const actions = card.querySelector('.card-actions');
+                    actions.innerHTML = '<span class="connected-status">Connected!</span>';
+                    
+                    // 2. Hide the 'no accepted invites' message if it exists
+                    if (noAcceptedMessage) {
+                        noAcceptedMessage.style.display = 'none';
+                    }
+
+                    // 3. Move the card to the 'Accepted' section
+                    acceptedList.appendChild(card);
+                    
+                } else if (event.target.classList.contains('btn-decline')) {
+                    // When 'Decline' is clicked
+                    if (confirm('Are you sure you want to decline this invite?')) {
+                        card.style.transition = 'opacity 0.5s ease';
+                        card.style.opacity = '0';
+                        setTimeout(() => card.remove(), 500); // Remove card after fade out
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

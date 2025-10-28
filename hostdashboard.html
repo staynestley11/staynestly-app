@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Dashboard - StayNestly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* (The CSS from the previous dashboard version goes here - it's already correct) */
+        :root { --primary-color: #27ae60; --secondary-color: #2c3e50; --background-color: #f8f9fa; --white-color: #fff; --text-color: #333; --light-text-color: #717171; --border-color: #e0e0e0; --danger-color: #c0392b; --stayshare-color: #8e44ad;}
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--background-color); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background-color: var(--white-color); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: 700; color: var(--secondary-color); text-decoration: none; }
+        .logo span { color: var(--primary-color); }
+        .user-profile { display: flex; align-items: center; gap: 15px; }
+        .user-profile span { font-weight: 600; }
+        #logout-btn { background: none; border: none; font-size: 15px; color: var(--danger-color); cursor: pointer; font-weight: 600; }
+        .page-header h1 { font-size: 28px; }
+        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 30px; }
+        @media (min-width: 992px) { .dashboard-grid { grid-template-columns: 2fr 1fr; } }
+        .main-content, .sidebar { display: flex; flex-direction: column; gap: 30px; }
+        .content-section { background-color: var(--white-color); padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .section-title { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: 600; margin: 0 0 25px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+        .summary-card { background-color: #f8f9fa; padding: 20px; border-radius: 10px; }
+        .summary-card h3 { font-size: 14px; color: var(--light-text-color); margin: 0 0 5px; }
+        .summary-card p { font-size: 24px; font-weight: 700; margin: 0; }
+        .booking-request { display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .booking-request:last-child { border-bottom: none; }
+        .request-info { flex-grow: 1; }
+        .request-info p { margin: 0; font-size: 15px; }
+        .request-info span { font-size: 13px; color: var(--light-text-color); }
+        .request-actions { display: flex; gap: 10px; }
+        .btn-action { padding: 8px 15px; border-radius: 6px; font-weight: 500; cursor: pointer; border: none; }
+        .btn-approve { background-color: #eafaf1; color: var(--primary-color); }
+        .btn-decline { background-color: #fbeeeeb2; color: var(--danger-color); }
+        .stayshare-badge { background-color: var(--stayshare-color); color: var(--white-color); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table th, .data-table td { text-align: left; padding: 12px 15px; border-bottom: 1px solid var(--border-color); }
+        .data-table th { font-size: 14px; color: var(--light-text-color); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; }
+        .btn-primary { background-image: linear-gradient(45deg, var(--primary-color), #2ecc71); color: var(--white-color); padding: 12px 25px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile"><span id="host-name">Host</span><button id="logout-btn">Log Out</button></div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="page-header"><h1>Host Dashboard</h1></div>
+        <div class="dashboard-grid">
+            <main class="main-content">
+                <div class="content-section">
+                    <div class="summary-grid">
+                        <div class="summary-card"><h3>Total Earnings</h3><p id="total-earnings">$0</p></div>
+                        <div class="summary-card"><h3>My Properties</h3><p id="properties-count">0</p></div>
+                        <div class="summary-card"><h3>Pending Requests</h3><p id="pending-count">0</p></div>
+                        <div class="summary-card"><h3>Upcoming Bookings</h3><p id="upcoming-count">0</p></div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <h2 class="section-title">New Booking Requests</h2>
+                    <div id="booking-requests-list"></div>
+                </div>
+                 <div class="content-section">
+                    <h2 class="section-title">My Properties</h2>
+                    <table class="data-table">
+                        <thead><tr><th>Title</th><th>Location</th><th>Price</th></tr></thead>
+                        <tbody id="properties-list"></tbody>
+                    </table>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <div class="content-section">
+                    <h2 class="section-title">Add New Listing</h2>
+                    <form id="add-property-form">
+                        <div class="form-group"><label for="title">Title</label><input type="text" id="title" required></div>
+                        <div class="form-group"><label for="location">Location</label><input type="text" id="location" required></div>
+                        <div class="form-group"><label for="price">Price per Night ($)</label><input type="number" id="price" required></div>
+                        <button type="submit" class="btn-primary">Add Property</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(sessionStorage.getItem('staynestly_currentUser'));
+            if (!currentUser || currentUser.role !== 'host') {
+                alert('Access Denied. Please log in as a host.');
+                window.location.href = 'host-login.html';
+                return;
+            }
+            let bookings = JSON.parse(localStorage.getItem('staynestly_bookings')) || [
+                { id: 1, hostEmail: currentUser.email, guestName: 'Aisha K.', property: 'Seaside Villa', dates: 'Nov 15-20', status: 'pending', type: 'solo' },
+                { id: 2, hostEmail: currentUser.email, guestName: 'Bilal A. & Fatima S.', property: 'Mountain Cabin', dates: 'Nov 22-25', status: 'pending', type: 'stayshare' },
+                { id: 3, hostEmail: currentUser.email, guestName: 'Zoya I.', property: 'Urban Loft', dates: 'Dec 01-05', status: 'approved', type: 'solo' }
+            ];
+            let properties = JSON.parse(localStorage.getItem('staynestly_properties')) || [
+                { id: 101, hostEmail: currentUser.email, title: 'Seaside Villa', location: 'Karachi', price: 120 },
+                { id: 102, hostEmail: currentUser.email, title: 'Mountain Cabin', location: 'Islamabad', price: 95 }
+            ];
+            document.getElementById('host-name').textContent = `Welcome, ${currentUser.name}!`;
+            const pendingCountEl = document.getElementById('pending-count');
+            const upcomingCountEl = document.getElementById('upcoming-count');
+            const propertiesCountEl = document.getElementById('properties-count');
+            const requestsListEl = document.getElementById('booking-requests-list');
+            const propertiesListEl = document.getElementById('properties-list');
+            const addPropertyForm = document.getElementById('add-property-form');
+            function renderAll() {
+                const pendingBookings = bookings.filter(b => b.status === 'pending' && properties.some(p => p.title === b.property && p.hostEmail === currentUser.email));
+                requestsListEl.innerHTML = '';
+                if (pendingBookings.length > 0) {
+                    pendingBookings.forEach(renderBookingRequest);
+                } else {
+                    requestsListEl.innerHTML = '<p>No new booking requests.</p>';
+                }
+                const hostProperties = properties.filter(p => p.hostEmail === currentUser.email);
+                propertiesListEl.innerHTML = '';
+                if (hostProperties.length > 0) {
+                    hostProperties.forEach(renderPropertyRow);
+                } else {
+                    propertiesListEl.innerHTML = '<tr><td colspan="3" style="text-align:center;">You have no properties listed.</td></tr>';
+                }
+                pendingCountEl.textContent = pendingBookings.length;
+                upcomingCountEl.textContent = bookings.filter(b => b.status === 'approved' && properties.some(p => p.title === b.property && p.hostEmail === currentUser.email)).length;
+                propertiesCountEl.textContent = hostProperties.length;
+            }
+            function renderBookingRequest(booking) {
+                const stayShareBadge = booking.type === 'stayshare' ? '<span class="stayshare-badge">STAYSHARE</span>' : '';
+                const requestHTML = `<div class="booking-request" data-id="${booking.id}"><div class="request-info"><p><strong>${booking.guestName}</strong>${stayShareBadge}</p><span><i class="fas fa-home"></i> ${booking.property} | <i class="fas fa-calendar-alt"></i> ${booking.dates}</span></div><div class="request-actions"><button class="btn-action btn-decline">Decline</button><button class="btn-action btn-approve">Approve</button></div></div>`;
+                requestsListEl.insertAdjacentHTML('beforeend', requestHTML);
+            }
+            function renderPropertyRow(prop) {
+                const row = `<tr><td>${prop.title}</td><td>${prop.location}</td><td>$${prop.price}</td></tr>`;
+                propertiesListEl.insertAdjacentHTML('beforeend', row);
+            }
+            requestsListEl.addEventListener('click', function(event) {
+                const bookingCard = event.target.closest('.booking-request');
+                if (!bookingCard) return;
+                const bookingId = parseInt(bookingCard.dataset.id);
+                const booking = bookings.find(b => b.id === bookingId);
+                if (event.target.classList.contains('btn-approve')) {
+                    booking.status = 'approved';
+                    localStorage.setItem('staynestly_bookings', JSON.stringify(bookings));
+                    renderAll();
+                }
+                if (event.target.classList.contains('btn-decline')) {
+                    if (confirm(`Decline request from ${booking.guestName}?`)) {
+                        bookings = bookings.filter(b => b.id !== bookingId);
+                        localStorage.setItem('staynestly_bookings', JSON.stringify(bookings));
+                        renderAll();
+                    }
+                }
+            });
+            addPropertyForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const newProperty = {
+                    id: Date.now(),
+                    hostEmail: currentUser.email,
+                    title: document.getElementById('title').value,
+                    location: document.getElementById('location').value,
+                    price: document.getElementById('price').value
+                };
+                properties.push(newProperty);
+                localStorage.setItem('staynestly_properties', JSON.stringify(properties));
+                addPropertyForm.reset();
+                renderAll();
+            });
+            document.getElementById('logout-btn').addEventListener('click', function() {
+                sessionStorage.removeItem('staynestly_currentUser');
+                window.location.href = 'host-login.html';
+            });
+            renderAll();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a StayBuddy - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* --- Header --- */
+        header { background-color: var(--white-color); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: 700; color: var(--secondary-color); text-decoration: none; }
+        .logo span { color: var(--primary-color); }
+        .user-profile img { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+        /* --- Search & Filter Bar --- */
+        .search-container {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+        .search-header h1 { font-size: 24px; margin: 0 0 20px; }
+        .search-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: flex-end;
+        }
+        .filter-group { display: flex; flex-direction: column; }
+        .filter-group label { font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+        .filter-group input, .filter-group select {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .btn-search {
+            background-image: linear-gradient(45deg, var(--primary-color), #2ecc71);
+            color: var(--white-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            height: 47px; /* Align with inputs */
+        }
+
+        /* --- Results Section --- */
+        .results-section { margin-top: 40px; }
+        .section-title { font-size: 22px; margin-bottom: 20px; }
+
+        .buddies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- StayBuddy Card --- */
+        .buddy-card {
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .buddy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .buddy-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .buddy-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .buddy-info h3 { font-size: 18px; margin: 0; }
+        .buddy-info p { font-size: 14px; color: var(--light-text-color); margin: 4px 0 0; }
+
+        .trip-details { flex-grow: 1; }
+        .trip-details p {
+            margin: 0 0 10px;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        .trip-details i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .card-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none; /* Make buttons consistent */
+        }
+        .btn-primary { background-color: var(--primary-color); color: var(--white-color); }
+        .btn-secondary { background-color: #ecf0f1; color: var(--secondary-color); }
+        /* Style for the disabled invite button */
+        .btn-primary:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="search-container">
+            <div class="search-header">
+                <h1>Find Your Perfect StayBuddy</h1>
+            </div>
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="e.g., Lahore">
+                </div>
+                <div class="filter-group">
+                    <label for="checkin">Check-in</label>
+                    <input type="date" id="checkin">
+                </div>
+                <div class="filter-group">
+                    <label for="checkout">Check-out</label>
+                    <input type="date" id="checkout">
+                </div>
+                <button class="btn-search"><i class="fas fa-search"></i> Find</button>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h2 id="results-title" class="section-title">Potential StayBuddies</h2>
+            <div class="buddies-grid">
+                <div class="buddy-card">
+                    <div class="buddy-header">
+                        <img src="https://i.pravatar.cc/150?u=aisha" alt="User Avatar">
+                        <div class="buddy-info">
+                            <h3>Aisha K.</h3>
+                            <p>Traveler from Karachi</p>
+                        </div>
+                    </div>
+                    <div class="trip-details">
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Dates:</strong> Nov 15 - Nov 18</p>
+                        <p><i class="fas fa-tag"></i> <strong>Budget:</strong> ~$80 / night</p>
+                        <p><i class="fas fa-comments"></i> "Looking for a clean, modern apartment to explore the city's food scene!"</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="user-profile.html" class="btn btn-secondary">View Profile</a>
+                        <button class="btn btn-primary btn-invite">Send Invite</button>
+                    </div>
+                </div>
+
+                <div class="buddy-card">
+                    <div class="buddy-header">
+                        <img src="https://i.pravatar.cc/150?u=bilal" alt="User Avatar">
+                        <div class="buddy-info">
+                            <h3>Bilal A.</h3>
+                            <p>Traveler from Islamabad</p>
+                        </div>
+                    </div>
+                    <div class="trip-details">
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Dates:</strong> Nov 17 - Nov 20</p>
+                        <p><i class="fas fa-tag"></i> <strong>Budget:</strong> ~$100 / night</p>
+                        <p><i class="fas fa-comments"></i> "Need a quiet place with good Wi-Fi for some remote work and sightseeing."</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="user-profile.html" class="btn btn-secondary">View Profile</a>
+                        <button class="btn btn-primary btn-invite">Send Invite</button>
+                    </div>
+                </div>
+                
+                <div class="buddy-card">
+                    <div class="buddy-header">
+                        <img src="https://i.pravatar.cc/150?u=fatima" alt="User Avatar">
+                        <div class="buddy-info">
+                            <h3>Fatima S.</h3>
+                            <p>Traveler from Multan</p>
+                        </div>
+                    </div>
+                    <div class="trip-details">
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Dates:</strong> Nov 15 - Nov 20</p>
+                        <p><i class="fas fa-tag"></i> <strong>Budget:</strong> ~$75 / night</p>
+                        <p><i class="fas fa-comments"></i> "Excited to visit Lahore for the first time! Looking for someone to explore with."</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="user-profile.html" class="btn btn-secondary">View Profile</a>
+                        <button class="btn btn-primary btn-invite">Send Invite</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Handle "Find" button click ---
+            const findButton = document.querySelector('.btn-search');
+            findButton.addEventListener('click', function() {
+                const destination = document.getElementById('destination').value;
+                const resultsTitle = document.getElementById('results-title');
+
+                if (destination) {
+                    alert(`Searching for StayBuddies interested in ${destination}...`);
+                    resultsTitle.textContent = `Potential StayBuddies for ${destination}`;
+                } else {
+                    alert('Please enter a destination to search.');
+                }
+            });
+
+            // --- 2. Handle "Send Invite" button clicks ---
+            const inviteButtons = document.querySelectorAll('.btn-invite');
+            inviteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.textContent = 'Invite Sent ✓';
+                    this.disabled = true; // Disable the button after sending
+                });
+            });
+
+            // Note: The "View Profile" buttons are simple links (`<a>` tags)
+            // that now navigate to `user-profile.html`. No extra JavaScript is needed for them.
+        });
+    </script>
+</body>
+</html>

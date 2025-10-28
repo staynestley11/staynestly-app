@@ -1,0 +1,47 @@
+/* General Body & Font Styles */
+body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #f8f9fa; color: #333; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.btn-primary { background-color: #007bff; color: white; border: none; }
+.btn-secondary { background-color: transparent; color: #333; border: 1px solid #ccc; }
+.btn-primary, .btn-secondary { padding: 10px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+.btn-primary:hover { background-color: #0056b3; }
+.btn-secondary:hover { border-color: #007bff; color: #007bff; }
+
+/* Header & Navbar */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.logo { font-size: 1.8em; font-weight: 700; color: #007bff; text-decoration: none; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: #555; font-weight: 600; }
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; }
+
+/* Main 2-Column Layout */
+.sharestay-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-start; }
+
+/* Property Details (Left) */
+.property-details .property-header h1 { font-size: 2em; margin-bottom: 5px; }
+.property-details .property-header p { color: #666; margin-top: 0; }
+.main-property-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+.cost-breakdown { background: white; padding: 20px; border-radius: 12px; }
+.cost-breakdown h3 { margin-top: 0; }
+.cost-breakdown p { display: flex; justify-content: space-between; }
+.cost-breakdown .your-share { font-weight: 700; font-size: 1.2em; color: #28a745; }
+
+/* Partner Matching (Right) */
+.partner-matching { background: white; padding: 30px; border-radius: 12px; }
+.partner-matching h2 { margin-top: 0; }
+.partner-matching .subtitle { color: #666; margin-bottom: 25px; }
+.partner-list { display: flex; flex-direction: column; gap: 15px; }
+
+/* Partner Card */
+.partner-card { display: grid; grid-template-columns: auto 1fr auto auto; gap: 15px; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 10px; }
+.partner-card img { width: 50px; height: 50px; border-radius: 50%; }
+.partner-info h4 { margin: 0; font-size: 1.1em; }
+.partner-info p { margin: 0; font-size: 0.9em; color: #555; }
+.compatibility-score { font-size: 1.2em; font-weight: 700; color: #007bff; background: #e9f5ff; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+
+/* Divider & Open Request */
+.divider { display: flex; align-items: center; text-align: center; color: #aaa; margin: 25px 0; }
+.divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #ddd; }
+.divider span { padding: 0 10px; }
+.open-request { text-align: center; }
+.open-request-btn { width: 100%; }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Bookings - StayNestly</title>
+    <link rel="stylesheet" href="hostbooking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="host.html">Dashboard</a></li>
+                <li><a href="hostbooking.html">Bookings</a></li>
+                <li><a href="home.html">Switch to Guest</a></li>
+            </ul>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/150?u=jane" alt="Host Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="bookings-header">
+            <h1>Manage Your Bookings</h1>
+            <div class="controls">
+                <input type="search" placeholder="Search by guest name...">
+                <select>
+                    <option>All Properties</option>
+                    <option>Seaside Villa</option>
+                    <option>Mountain Cabin</option>
+                </select>
+                <div class="view-switcher">
+                    <button id="listViewBtn" class="view-btn active"><i class="fas fa-list"></i> List</button>
+                    <button id="calViewBtn" class="view-btn"><i class="fas fa-calendar-alt"></i> Calendar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bookings-content">
+
+            <div id="listView" class="view-pane active">
+                <nav class="tabs">
+                    <button class="tab-btn active" data-tab="upcoming">Upcoming (2)</button>
+                    <button class="tab-btn" data-tab="in-progress">In-Progress (1)</button>
+                    <button class="tab-btn" data-tab="completed">Completed</button>
+                    <button class="tab-btn" data-tab="canceled">Canceled</button>
+                </nav>
+
+                <div id="upcoming" class="tab-content active">
+                    <div class="booking-card">
+                        <div class="guest-details"><img src="https://i.pravatar.cc/150?u=john" alt="Guest">John Doe</div>
+                        <div class="property-details"><strong>Seaside Villa</strong><span><i class="fas fa-user-friends"></i> 2 Guests</span></div>
+                        <div class="date-details">Oct 24, 2025 → Oct 28, 2025</div>
+                        <div class="payout-details"><strong>$720.00</strong><span>Host Payout</span></div>
+                        <div class="actions"><button class="btn-action" title="Contact Guest"><i class="fas fa-comment-dots"></i></button><button class="btn-action" title="Send Instructions"><i class="fas fa-paper-plane"></i></button></div>
+                    </div>
+                     <div class="booking-card">
+                        <div class="guest-details"><img src="https://i.pravatar.cc/150?u=mary" alt="Guest">Mary Smith</div>
+                        <div class="property-details"><strong>Mountain Cabin</strong><span><i class="fas fa-user-friends"></i> 4 Guests</span></div>
+                        <div class="date-details">Nov 02, 2025 → Nov 05, 2025</div>
+                        <div class="payout-details"><strong>$528.00</strong><span>Host Payout</span></div>
+                        <div class="actions"><button class="btn-action" title="Contact Guest"><i class="fas fa-comment-dots"></i></button><button class="btn-action" title="Send Instructions"><i class="fas fa-paper-plane"></i></button></div>
+                    </div>
+                </div>
+
+                <div id="in-progress" class="tab-content">
+                    <div class="booking-card">
+                        <div class="guest-details"><img src="https://i.pravatar.cc/150?u=alex" alt="Guest">Alex Johnson</div>
+                        <div class="property-details"><strong>Seaside Villa</strong><span><i class="fas fa-user-friends"></i> 2 Guests</span></div>
+                        <div class="date-details">Oct 15, 2025 → Oct 20, 2025</div>
+                        <div class="payout-details"><strong>$900.00</strong><span>Host Payout</span></div>
+                        <div class="actions"><button class="btn-action" title="Contact Guest"><i class="fas fa-comment-dots"></i></button></div>
+                    </div>
+                </div>
+                
+                <div id="completed" class="tab-content">
+                    <div class="empty-state"><i class="fas fa-check-circle"></i><h3>No Completed Bookings</h3><p>Past bookings will appear here.</p></div>
+                </div>
+
+                <div id="canceled" class="tab-content">
+                    <div class="empty-state"><i class="fas fa-times-circle"></i><h3>No Canceled Bookings</h3><p>Canceled bookings will appear here.</p></div>
+                </div>
+            </div>
+
+            <div id="calendarView" class="view-pane">
+                <div class="calendar-header">
+                    <button><i class="fas fa-chevron-left"></i></button>
+                    <h2>October 2025</h2>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+                    <div class="day-cell other-month">28</div><div class="day-cell other-month">29</div><div class="day-cell other-month">30</div>
+                    <div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div>
+                    <div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div>
+                    <div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell">14</div>
+                    <div class="day-cell booking-day villa">15</div><div class="day-cell booking-day villa">16</div><div class="day-cell booking-day villa">17</div><div class="day-cell booking-day villa">18</div>
+                    <div class="day-cell booking-day villa">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div>
+                    <div class="day-cell booking-day villa">24</div><div class="day-cell booking-day villa">25</div>
+                    <div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell">31</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="hostbooking.js"></script>
+
+</body>
+</html>

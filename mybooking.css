@@ -1,0 +1,65 @@
+/* General Body & Font Styles */
+body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #f8f9fa; color: #333; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.btn-primary, .btn-secondary, .btn-danger, .btn-success { padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9em; border: 1px solid transparent; }
+.btn-primary { background-color: #007bff; color: white; border-color: #007bff; }
+.btn-secondary { background-color: transparent; color: #333; border-color: #ccc; }
+.btn-danger { background-color: #dc3545; color: white; border-color: #dc3545; }
+.btn-success { background-color: #28a745; color: white; border-color: #28a745; }
+.btn-primary:hover { background-color: #0056b3; }
+.btn-secondary:hover { border-color: #333; }
+
+/* Header & Navbar */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.logo { font-size: 1.8em; font-weight: 700; color: #007bff; text-decoration: none; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: #555; font-weight: 600; }
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; }
+
+/* Bookings Header & Tabs */
+.bookings-header { text-align: center; margin-bottom: 30px; }
+.bookings-header h1 { font-size: 2.2em; margin-bottom: 5px; }
+.bookings-header p { color: #666; }
+.tabs { display: flex; justify-content: center; border-bottom: 1px solid #ddd; margin-bottom: 30px; }
+.tab-btn { background: none; border: none; padding: 10px 20px; font-size: 1em; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; position: relative; }
+.tab-btn.active { color: #007bff; border-bottom-color: #007bff; }
+.tab-content { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.5s; }
+.tab-content.active { display: flex; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.notification-dot { height: 8px; width: 8px; background-color: #007bff; border-radius: 50%; position: absolute; top: 10px; right: 5px; }
+
+/* ShareStay Hub Styles */
+.sharestay-section { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.sharestay-section h2 { margin-top: 0; font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+.invitation-card { display: grid; grid-template-columns: auto 1fr auto; gap: 15px; align-items: center; padding: 15px; border-radius: 10px; background-color: #f8f9fa; }
+.invitation-card.sent { grid-template-columns: auto 1fr auto auto; }
+.invitation-card:not(:last-child) { margin-bottom: 10px; }
+.invitation-card img { width: 50px; height: 50px; border-radius: 50%; }
+.invitation-details p { margin: 0; }
+.invitation-details small { color: #666; }
+.invitation-actions { display: flex; gap: 10px; }
+.invitation-actions .btn { width: auto; }
+.chat-btn { display: flex; align-items: center; gap: 5px; }
+.invitation-status { font-weight: 700; padding: 5px 10px; border-radius: 6px; font-size: 0.9em; }
+.invitation-status.pending { background-color: #fff3cd; color: #856404; }
+.invitation-status.accepted { background-color: #d4edda; color: #155724; }
+.invitation-status.declined { background-color: #f8d7da; color: #721c24; }
+.invitation-status.expired { background-color: #e2e3e5; color: #383d41; }
+
+/* Modal & Chat Styles */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+.modal-content { background-color: #fefefe; margin: 10% auto; padding: 0; border-radius: 12px; width: 90%; max-width: 400px; display: flex; flex-direction: column; height: 500px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
+.chat-header { display: flex; align-items: center; gap: 10px; padding: 15px; background: #007bff; color: white; border-radius: 12px 12px 0 0; }
+.chat-header img { width: 40px; height: 40px; border-radius: 50%; }
+.chat-header h3 { margin: 0; flex-grow: 1; }
+.close-btn { color: white; font-size: 28px; font-weight: bold; cursor: pointer; background: none; border: none; }
+.chat-body { flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.message { max-width: 80%; padding: 10px 15px; border-radius: 18px; line-height: 1.4; }
+.my-message { background-color: #007bff; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+.partner-message { background-color: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 4px; }
+.chat-footer { display: flex; padding: 10px; border-top: 1px solid #eee; }
+.chat-footer input { flex-grow: 1; border: none; padding: 10px; outline: none; font-size: 1em; }
+.chat-footer button { background: none; border: none; color: #007bff; font-size: 1.2em; cursor: pointer; padding: 0 10px; }
+
+/* Empty State */
+.empty-state { text-align: center; padding: 20px; color: #999; }

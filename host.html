@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Dashboard - StayNestly</title>
+    <link rel="stylesheet" href="host.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="host.html">Dashboard</a></li>
+                <li><a href="hostbooking.html">Bookings</a></li>
+                <li><a href="login.html">Switch to Guest</a></li>
+            </ul>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/150?u=jane" alt="Host Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-header">
+            <h1>Welcome back, Jane!</h1>
+            <p>Here's what's happening with your properties today.</p>
+        </div>
+
+        <section class="stats-cards">
+            <div class="card">
+                <i class="fas fa-dollar-sign icon"></i>
+                <div class="card-content">
+                    <h3>Total Earnings</h3>
+                    <p>$12,500</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-home icon"></i>
+                <div class="card-content">
+                    <h3>Properties Listed</h3>
+                    <p>3</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-calendar-check icon"></i>
+                <div class="card-content">
+                    <h3>Upcoming Bookings</h3>
+                    <p>5</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Add New Property</h2>
+            <form class="add-property-form card">
+                <div class="form-row">
+                    <div class="form-group"><label for="title">Property Title</label><input type="text" id="title" placeholder="e.g., Elegant Apartment"></div>
+                    <div class="form-group"><label for="location">Location</label><input type="text" id="location" placeholder="e.g., City, Country"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="price">Price per Night ($)</label><input type="number" id="price" placeholder="e.g., 150"></div>
+                    <div class="form-group"><label for="photos">Upload Photos</label><input type="file" id="photos"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Property</button>
+            </form>
+        </section>
+        
+        <section class="dashboard-section">
+            <h2>ShareStay Requests</h2>
+            <div class="card">
+                <table class="requests-table">
+                    <thead><tr><th>Guest Name</th><th>Property</th><th>Dates</th><th>Your Share</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Seaside Villa</td>
+                            <td>Oct 24 - Oct 28</td>
+                            <td class="rent-share">$75/night (50%)</td>
+                            <td>
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Decline</button>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Mary Smith</td>
+                            <td>Urban Loft</td>
+                            <td>Nov 02 - Nov 05</td>
+                            <td class="rent-share">$50/night (50%)</td>
+                            <td>
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Decline</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Manage Properties</h2>
+            <div class="card">
+                <table class="properties-table">
+                    <thead><tr><th>Property Name</th><th>Bookings</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Seaside Villa</td><td>5 Upcoming</td>
+                            <td><button class="btn btn-secondary">Edit</button><button class="btn btn-danger">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>Mountain Cabin</td><td>2 Upcoming</td>
+                            <td><button class="btn btn-secondary">Edit</button><button class="btn btn-danger">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Your Reviews</h2>
+            <div class="reviews-list">
+                <div class="review-card card">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-comment">"Jane was an amazing host! The villa was beautiful and exactly as described. Highly recommend!"</p>
+                    <div class="guest-info">- Alex Johnson, Oct 15, 2025</div>
+                </div>
+                <div class="review-card card">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="review-comment">"Great location and a very responsive host. The cabin was cozy, though the Wi-Fi was a bit slow."</p>
+                    <div class="guest-info">- Sarah Lee, Sep 30, 2025</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="host.js"></script>
+
+</body>
+</html>

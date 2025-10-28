@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        header { background-color: var(--white-color); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 26px; font-weight: 700; color: var(--secondary-color); text-decoration: none; }
+        .logo span { color: var(--primary-color); }
+        .user-profile img { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* --- Profile Sidebar (Left) --- */
+        .profile-sidebar {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .profile-sidebar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .profile-sidebar h2 { margin: 0 0 5px; font-size: 22px; }
+        .profile-sidebar p { color: var(--light-text-color); margin: 0 0 20px; }
+        .btn-primary {
+            background-image: linear-gradient(45deg, var(--primary-color), #2ecc71);
+            color: var(--white-color); padding: 12px 25px; border-radius: 8px; font-size: 15px;
+            font-weight: 600; border: none; cursor: pointer; width: 100%;
+        }
+
+        /* --- Reviews Content (Right) --- */
+        .reviews-content {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .reviews-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .reviews-header h3 { margin: 0; font-size: 22px; }
+
+        .review-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .review-item img { width: 50px; height: 50px; border-radius: 50%; }
+        .review-details { flex-grow: 1; }
+        .review-author { display: flex; justify-content: space-between; align-items: center; }
+        .review-author h4 { font-size: 16px; margin: 0; }
+        .review-author span { font-size: 13px; color: var(--light-text-color); }
+        .star-rating { color: #f39c12; margin: 5px 0; }
+        .review-text { margin: 5px 0 0; }
+
+        /* --- Review Modal --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 2000;
+            display: none; /* Hidden by default */
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: var(--white-color); padding: 30px; border-radius: 12px;
+            width: 90%; max-width: 500px;
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { margin: 0; font-size: 20px; }
+        .close-btn { font-size: 24px; cursor: pointer; border: none; background: none; }
+        .review-form .star-input { display: flex; flex-direction: row-reverse; justify-content: center; font-size: 2.5rem; margin-bottom: 20px; }
+        .review-form .star-input input { display: none; }
+        .review-form .star-input label { color: #ccc; cursor: pointer; transition: color 0.2s; }
+        .review-form .star-input input:checked ~ label,
+        .review-form .star-input label:hover,
+        .review-form .star-input label:hover ~ label { color: #f39c12; }
+        .review-form textarea { width: 100%; min-height: 100px; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40?u=current_user" alt="Current User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="profile-layout">
+            <aside class="profile-sidebar">
+                <img src="https://i.pravatar.cc/150?u=aisha" alt="User Avatar">
+                <h2>Aisha K.</h2>
+                <p>Joined in October 2025</p>
+                <button id="leave-review-btn" class="btn-primary">Leave a Review</button>
+            </aside>
+
+            <main class="reviews-content">
+                <div class="reviews-header">
+                    <h3>Reviews for Aisha</h3>
+                </div>
+                <div id="reviews-list">
+                    <div class="review-item">
+                        <img src="https://i.pravatar.cc/150?u=bilal" alt="Reviewer Avatar">
+                        <div class="review-details">
+                            <div class="review-author">
+                                <h4>Bilal A.</h4>
+                                <span>October 2025</span>
+                            </div>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">Aisha was a fantastic StayBuddy! Very respectful and great company for exploring the city. Highly recommended.</p>
+                        </div>
+                    </div>
+                    <div class="review-item">
+                        <img src="https://i.pravatar.cc/150?u=fatima" alt="Reviewer Avatar">
+                        <div class="review-details">
+                            <div class="review-author">
+                                <h4>Fatima S.</h4>
+                                <span>September 2025</span>
+                            </div>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <p class="review-text">A great host! The apartment was exactly as described and Aisha was very helpful with local tips.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="review-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Leave a review for Aisha</h3>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            <form id="review-form" class="review-form">
+                <div class="star-input">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                </div>
+                <textarea id="review-text" rows="4" placeholder="Share details of your experience..." required></textarea>
+                <button type="submit" class="btn-primary" style="margin-top: 20px;">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('review-modal');
+            const openBtn = document.getElementById('leave-review-btn');
+            const closeBtn = document.getElementById('close-modal-btn');
+            const reviewForm = document.getElementById('review-form');
+            const reviewsList = document.getElementById('reviews-list');
+
+            // Open and close the modal
+            openBtn.addEventListener('click', () => { modal.style.display = 'flex'; });
+            closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Handle form submission
+            reviewForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const ratingValue = document.querySelector('input[name="rating"]:checked');
+                const reviewText = document.getElementById('review-text').value;
+
+                if (!ratingValue) {
+                    alert('Please select a star rating.');
+                    return;
+                }
+
+                // Create star icons based on rating
+                let starsHTML = '';
+                for(let i = 0; i < 5; i++) {
+                    starsHTML += `<i class="${i < ratingValue.value ? 'fas' : 'far'} fa-star"></i>`;
+                }
+
+                // Create the new review HTML
+                const newReviewHTML = `
+                    <div class="review-item">
+                        <img src="https://i.pravatar.cc/150?u=current_user" alt="Reviewer Avatar">
+                        <div class="review-details">
+                            <div class="review-author">
+                                <h4>You</h4>
+                                <span>Just now</span>
+                            </div>
+                            <div class="star-rating">${starsHTML}</div>
+                            <p class="review-text">${reviewText}</p>
+                        </div>
+                    </div>
+                `;
+
+                // Add the new review to the top of the list
+                reviewsList.insertAdjacentHTML('afterbegin', newReviewHTML);
+
+                // Close modal and reset form
+                modal.style.display = 'none';
+                reviewForm.reset();
+            });
+        });
+    </script>
+
+</body>
+</html>

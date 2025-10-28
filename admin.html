@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StayNestly</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly (Admin)</a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/150?u=admin" alt="Admin Avatar">
+                <span>Admin User</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <p>Platform overview and management tools.</p>
+        </div>
+
+        <section class="stats-cards">
+            <div class="card"><i class="fas fa-users icon"></i><div class="card-content"><h3>Total Users</h3><p>1,500</p></div></div>
+            <div class="card"><i class="fas fa-home icon"></i><div class="card-content"><h3>Total Properties</h3><p>450</p></div></div>
+            <div class="card"><i class="fas fa-dollar-sign icon"></i><div class="card-content"><h3>Total Revenue</h3><p>$125,000</p></div></div>
+             <div class="card"><i class="fas fa-calendar-check icon"></i><div class="card-content"><h3>Bookings Today</h3><p>85</p></div></div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>User Management</h2>
+            <div class="card">
+                <table class="management-table" id="userTable">
+                    <thead><tr><th>User</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        <tr><td>john_doe</td><td>Guest</td><td class="status-cell">Active</td><td><button class="btn btn-secondary" data-action="edit">Edit</button><button class="btn btn-danger" data-action="ban">Ban</button></td></tr>
+                        <tr><td>host_mary</td><td>Host</td><td class="status-cell">Active</td><td><button class="btn btn-secondary" data-action="edit">Edit</button><button class="btn btn-danger" data-action="ban">Ban</button></td></tr>
+                        <tr><td>guest_sam</td><td>Guest</td><td class="status-cell banned-status">Banned</td><td><button class="btn btn-secondary" data-action="edit">Edit</button><button class="btn btn-success" data-action="unban">Unban</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Property Approval Requests</h2>
+            <div class="card">
+                <table class="management-table" id="propertyTable">
+                     <thead><tr><th>Property Name</th><th>Host</th><th>Submitted</th><th>Actions</th></tr></thead>
+                     <tbody>
+                        <tr><td>Cozy Lake Cottage</td><td>host_mary</td><td>2025-10-18</td><td><button class="btn btn-success" data-action="approve">Approve</button><button class="btn btn-danger" data-action="reject">Reject</button></td></tr>
+                        <tr><td>Urban Studio Apartment</td><td>host_john</td><td>2025-10-17</td><td><button class="btn btn-success" data-action="approve">Approve</button><button class="btn btn-danger" data-action="reject">Reject</button></td></tr>
+                     </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Generate Reports</h2>
+            <div class="report-actions">
+                <button class="btn-primary" data-action="report-finance"><i class="fas fa-file-invoice-dollar"></i> Finance Report</button>
+                <button class="btn-primary" data-action="report-user"><i class="fas fa-user-check"></i> User Report</button>
+                <button class="btn-primary" data-action="report-property"><i class="fas fa-chart-pie"></i> Property Stats</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

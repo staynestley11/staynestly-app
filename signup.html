@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - StayNestly</title>
+    <link rel="stylesheet" href="signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="signup-container">
+        <div class="signup-box">
+            <a href="index.html" class="logo">StayNestly</a>
+            <h2>Join Our Community</h2>
+            
+            <div class="role-toggle">
+                <button id="guestBtn" class="toggle-btn active">As a Guest</button>
+                <button id="hostBtn" class="toggle-btn">As a Host</button>
+            </div>
+
+            <div class="form-container">
+                <div id="guestSignup" class="form-section active">
+                    <p class="subtitle">Create an account to book unique stays.</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" placeholder="Create Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Account</button>
+                    </form>
+                    <div class="divider"><span>OR</span></div>
+                    <div class="social-signup">
+                        <button type="button" class="btn btn-social"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google icon"> Continue with Google</button>
+                        <button type="button" class="btn btn-social"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Facebook_f_logo_%282021%29.svg" alt="Facebook icon"> Continue with Facebook</button>
+                    </div>
+                </div>
+                
+                <div id="hostSignup" class="form-section">
+                    <p class="subtitle">List your property and start earning.</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                         <div class="input-group">
+                            <input type="password" placeholder="Create Password" required>
+                        </div>
+                        <div class="phone-input-group">
+                            <select class="country-code-select" name="countryCode">
+                                <option data-countryCode="PK" value="92">PK (+92)</option>
+                                <option data-countryCode="GB" value="44">UK (+44)</option>
+                                <option data-countryCode="US" value="1">USA (+1)</option>
+                                <optgroup label="Other countries">
+                                    <option data-countryCode="DZ" value="213">Algeria (+213)</option>
+                                    <option data-countryCode="AD" value="376">Andorra (+376)</option>
+                                    <option data-countryCode="AO" value="244">Angola (+244)</option>
+                                    <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
+                                    <option data-countryCode="AG" value="1268">Antigua & Barbuda (+1268)</option>
+                                    <option data-countryCode="AR" value="54">Argentina (+54)</option>
+                                    <option data-countryCode="AM" value="374">Armenia (+374)</option>
+                                    <option data-countryCode="AW" value="297">Aruba (+297)</option>
+                                    <option data-countryCode="AU" value="61">Australia (+61)</option>
+                                    <option data-countryCode="AT" value="43">Austria (+43)</option>
+                                    <option data-countryCode="AZ" value="994">Azerbaijan (+994)</option>
+                                    <option data-countryCode="BS" value="1242">Bahamas (+1242)</option>
+                                    <option data-countryCode="BH" value="973">Bahrain (+973)</option>
+                                    <option data-countryCode="BD" value="880">Bangladesh (+880)</option>
+                                    <option data-countryCode="BB" value="1246">Barbados (+1246)</option>
+                                    <option data-countryCode="BY" value="375">Belarus (+375)</option>
+                                    <option data-countryCode="BE" value="32">Belgium (+32)</option>
+                                    <option data-countryCode="BZ" value="501">Belize (+501)</option>
+                                    <option data-countryCode="BJ" value="229">Benin (+229)</option>
+                                    <option data-countryCode="BM" value="1441">Bermuda (+1441)</option>
+                                    <option data-countryCode="BT" value="975">Bhutan (+975)</option>
+                                    <option data-countryCode="BO" value="591">Bolivia (+591)</option>
+                                    <option data-countryCode="BA" value="387">Bosnia Herzegovina (+387)</option>
+                                    <option data-countryCode="BW" value="267">Botswana (+267)</option>
+                                    <option data-countryCode="BR" value="55">Brazil (+55)</option>
+                                    <option data-countryCode="BN" value="673">Brunei (+673)</option>
+                                    <option data-countryCode="BG" value="359">Bulgaria (+359)</option>
+                                    <option data-countryCode="BF" value="226">Burkina Faso (+226)</option>
+                                    <option data-countryCode="BI" value="257">Burundi (+257)</option>
+                                </optgroup>
+                            </select>
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Host Account</button>
+                    </form>
+                     <div class="divider"><span>OR</span></div>
+                    <div class="social-signup">
+                        <button type="button" class="btn btn-social"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google icon"> Continue with Google</button>
+                        <button type="button" class="btn btn-social"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Facebook_f_logo_%282021%29.svg" alt="Facebook icon"> Continue with Facebook</button>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="login-link">
+                Already have an account? <a href="login.html">Log In</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="signup.js"></script>
+</body>
+</html>

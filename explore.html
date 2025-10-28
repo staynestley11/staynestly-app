@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Stays - StayNestly</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="explore.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="mybooking.html">My Bookings</a></li>
+                <li><a href="host.html">Become a Host</a></li>
+            </ul>
+            <div class="user-profile">
+                <a href="profile.html"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar"></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="explore-layout">
+        <aside class="filters-panel">
+            <h3>Filters</h3>
+            <div class="filter-group">
+                <label>Price Range</label>
+                <div class="price-inputs"><input type="number" placeholder="Min"><span>-</span><input type="number" placeholder="Max"></div>
+            </div>
+            <div class="filter-group">
+                <label>Property Type</label>
+                <select><option>Any</option><option>Apartment</option><option>Villa</option><option>Cabin</option></select>
+            </div>
+            <div class="filter-group">
+                <label>Amenities</label>
+                <div class="amenities-list"><label><input type="checkbox"> Wifi</label><label><input type="checkbox"> Pool</label><label><input type="checkbox"> Free Parking</label><label><input type="checkbox"> Kitchen</label></div>
+            </div>
+            <button class="btn-primary">Apply Filters</button>
+        </aside>
+
+        <main class="results-panel">
+            <div class="results-header">
+                <h2>Stays Near You</h2>
+                <p>Showing properties based on your location.</p>
+            </div>
+            <div class="listings-grid">
+                 <a href="property-detail.html" class="card-link">
+                    <div class="property-card" data-id="1">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80" alt="Villa">
+                        <div class="card-content"><h3>Modern Villa with Ocean View</h3><p class="location">Malibu, California</p><div class="price">$450/night</div></div>
+                    </div>
+                 </a>
+                 <a href="sharestay-detail.html" class="card-link">
+                    <div class="property-card" data-id="2">
+                        <div class="share-stay-badge">🤝 ShareStay</div>
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80" alt="Studio">
+                        <div class="card-content"><h3>Sunny Downtown Studio</h3><p class="location">San Francisco, California</p><div class="price share-price">$90/night (Your Share)</div></div>
+                    </div>
+                 </a>
+                 <a href="property-detail.html" class="card-link">
+                    <div class="property-card" data-id="3">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80" alt="Cabin">
+                        <div class="card-content"><h3>Cozy Cabin in the Woods</h3><p class="location">Lake Tahoe, California</p><div class="price">$220/night</div></div>
+                    </div>
+                 </a>
+            </div>
+             <div class="pagination"><button>&laquo;</button><button class="active">1</button><button>2</button><button>3</button><button>&raquo;</button></div>
+        </main>
+
+        <aside class="map-panel">
+            <div id="map"></div>
+        </aside>
+    </div>
+
+    <script src="explore"></script>
+</body>
+</html>

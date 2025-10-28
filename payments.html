@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments Settings - StayNestly</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --white-color: #fff;
+            --text-color: #333;
+            --light-text-color: #717171;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary-color); }
+        
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* --- Settings Layout --- */
+        .page-header h1 {
+            font-size: 28px;
+            margin-top: 30px;
+        }
+
+        .settings-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            align-items: flex-start;
+        }
+
+        /* Sidebar Navigation */
+        .settings-sidebar {
+            flex: 0 0 250px;
+            background-color: var(--white-color);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-nav li a i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: var(--light-text-color);
+            transition: color 0.3s;
+        }
+        
+        .sidebar-nav li a.active,
+        .sidebar-nav li a:hover {
+            background-color: #eafaf1;
+            color: var(--primary-color);
+        }
+        .sidebar-nav li a.active i,
+        .sidebar-nav li a:hover i {
+            color: var(--primary-color);
+        }
+
+        /* Main Content Area */
+        .settings-content {
+            flex: 1;
+        }
+        
+        .content-section {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .section-header-text h2 { margin: 0; font-size: 22px; }
+        .section-header-text p { margin: 5px 0 0; color: var(--light-text-color); }
+        
+        /* General Button Style */
+        .btn {
+            padding: 10px 20px; border: none; border-radius: 8px; font-size: 14px;
+            font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-primary { background-color: var(--primary-color); color: var(--white-color); }
+        .btn-primary:hover { background-color: #229954; }
+        .btn-secondary { background-color: #ecf0f1; color: var(--secondary-color); }
+        .btn-link { background: none; color: var(--primary-color); font-weight: 600; }
+
+        /* Payment Method Card */
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .payment-method .icon { font-size: 36px; }
+        .method-details { flex-grow: 1; }
+        .method-details h4 { font-size: 16px; margin: 0; }
+        .method-details p { font-size: 14px; color: var(--light-text-color); margin: 4px 0 0; }
+        .method-actions { display: flex; gap: 10px; }
+
+        /* Transaction History Table */
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .transaction-table th, .transaction-table td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .transaction-table th { font-weight: 600; font-size: 14px; color: var(--light-text-color); }
+        .transaction-table td .status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-completed { background-color: #eafaf1; color: var(--primary-color); }
+        .status-pending { background-color: #fef9e7; color: #f39c12; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Stay<span>Nestly</span></a>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Account Settings</h1>
+        </div>
+
+        <div class="settings-layout">
+            <aside class="settings-sidebar">
+                <ul class="sidebar-nav">
+                    <li><a href="settings.html"><i class="fas fa-user-cog"></i> Personal Info</a></li>
+                    <li><a href="security.html"><i class="fas fa-shield-alt"></i> Security</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-credit-card"></i> Payments</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Back to Dashboard</a></li>
+                </ul>
+            </aside>
+
+            <main class="settings-content">
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-header-text">
+                            <h2>Payment Methods</h2>
+                            <p>Manage saved payment methods for faster booking.</p>
+                        </div>
+                        <button class="btn btn-primary">Add Method</button>
+                    </div>
+                    <div class="payment-method">
+                        <div class="icon"><i class="fab fa-cc-visa"></i></div>
+                        <div class="method-details">
+                            <h4>Visa ending in 1234</h4>
+                            <p>Expires 08/2028</p>
+                        </div>
+                        <div class="method-actions">
+                            <button class="btn btn-link">Edit</button>
+                            <button class="btn btn-link" style="color: #e74c3c;">Remove</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-header-text">
+                            <h2>Payout Methods</h2>
+                            <p>Set up how you want to receive payments for your listings.</p>
+                        </div>
+                        <button class="btn btn-primary">Add Payout Method</button>
+                    </div>
+                    <div class="payment-method">
+                        <div class="icon"><i class="fas fa-university"></i></div>
+                        <div class="method-details">
+                            <h4>Bank Account ending in 5678</h4>
+                            <p>HBL - Habib Bank Limited</p>
+                        </div>
+                        <div class="method-actions">
+                            <button class="btn btn-link">Edit</button>
+                            <button class="btn btn-link" style="color: #e74c3c;">Remove</button>
+                        </div>
+                    </div>
+                </section>
+                
+                 <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-header-text">
+                            <h2>Transaction History</h2>
+                            <p>A complete record of your payments and payouts.</p>
+                        </div>
+                        <button class="btn btn-secondary">Download Statement</button>
+                    </div>
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 17, 2025</td>
+                                <td>Payout for 'Luxury Villa'</td>
+                                <td>+$450.00</td>
+                                <td><span class="status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Oct 15, 2025</td>
+                                <td>Payment for 'Apartment in Lahore'</td>
+                                <td>-$513.00</td>
+                                <td><span class="status status-completed">Completed</span></td>
+                            </tr>
+                             <tr>
+                                <td>Oct 12, 2025</td>
+                                <td>Refund for 'Mountain Cabin'</td>
+                                <td>+$120.00</td>
+                                <td><span class="status status-completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

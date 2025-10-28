@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Sign Up - StayNestly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #27ae60; --secondary-color: #2c3e50; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .signup-container { background-color: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 100%; max-width: 450px; text-align: center; }
+        .logo { font-size: 32px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
+        .logo span { color: var(--primary-color); }
+        h2 { margin-top: 0; margin-bottom: 10px; color: #333; font-weight: 600; }
+        p { color: #777; margin-bottom: 30px; }
+        .form-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 500; color: #555; }
+        input { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        .btn-primary { background-color: var(--primary-color); color: #fff; margin-bottom: 20px; }
+        .switch-link { margin-top: 25px; font-size: 15px; }
+        .switch-link a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="logo">Stay<span>Nestly</span></div>
+        <h2>Create a Host Account</h2>
+        <p>Start your hosting journey.</p>
+        <form id="host-signup-form">
+            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" required></div>
+            <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" required></div>
+            <div class="form-group"><label for="password">Password</label><input type="password" id="password" required></div>
+            <button type="submit" class="btn btn-primary">Agree & Continue</button>
+        </form>
+        <div class="switch-link">
+            <p>Already a host? <a href="host-login.html">Log In</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('host-signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const users = JSON.parse(localStorage.getItem('staynestly_users')) || [];
+            const userExists = users.some(user => user.email === document.getElementById('email').value);
+            if (userExists) {
+                alert('An account with this email already exists.');
+            } else {
+                users.push({ 
+                    name: document.getElementById('name').value, 
+                    email: document.getElementById('email').value, 
+                    password: document.getElementById('password').value, 
+                    role: 'host' 
+                });
+                localStorage.setItem('staynestly_users', JSON.stringify(users));
+                alert('Host account created! Please log in.');
+                window.location.href = 'host-login.html';
+            }
+        });
+    </script>
+</body>
+</html>

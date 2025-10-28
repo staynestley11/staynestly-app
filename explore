@@ -1,0 +1,48 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Default location (Sialkot, Pakistan) if user denies location access
+    const defaultLocation = [32.4945, 74.5229]; 
+    let map;
+
+    // Function to set up the map and markers
+    const setupMap = (center, zoom) => {
+        map = L.map('map').setView(center, zoom);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker(center).addTo(map).bindPopup('<b>You are here!</b>').openPopup();
+            
+        const nearbyProperties = [
+            { id: 1, lat: center[0] + 0.005, lng: center[1] - 0.005, name: "Modern Villa" },
+            { id: 2, lat: center[0] - 0.004, lng: center[1] + 0.006, name: "Sunny Downtown Studio" },
+            { id: 3, lat: center[0] + 0.002, lng: center[1] + 0.008, name: "Cozy Cabin" }
+        ];
+        
+        nearbyProperties.forEach(prop => {
+            const marker = L.marker([prop.lat, prop.lng]).addTo(map).bindPopup(prop.name);
+            marker.on('mouseover', () => {
+                document.querySelector(`.property-card[data-id="${prop.id}"]`).style.borderColor = '#007bff';
+            });
+             marker.on('mouseout', () => {
+                document.querySelector(`.property-card[data-id="${prop.id}"]`).style.borderColor = 'transparent';
+            });
+        });
+    };
+
+    const locationSuccess = (position) => {
+        const userLocation = [position.coords.latitude, position.coords.longitude];
+        setupMap(userLocation, 13);
+    };
+
+    const locationError = () => {
+        alert("Could not get your location. Showing default properties near Sialkot.");
+        setupMap(defaultLocation, 13);
+    };
+
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+    } else {
+        alert("Geolocation is not supported. Showing default location.");
+        setupMap(defaultLocation, 13);
+    }
+});

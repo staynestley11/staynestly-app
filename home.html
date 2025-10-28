@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - StayNestly</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="mybooking.html">My Bookings</a></li>
+                <li><a href="signup.html">Become a Host</a></li>
+            </ul>
+            <div class="user-profile" id="userProfileMenu">
+                <a href="profile.html">
+                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar">
+                </a>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="profile.html">Profile</a>
+                    <a href="profile.html">Account Settings</a>
+                    <div class="divider"></div>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <div class="container">
+                <h2>Where to next?</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search destinations">
+                    <input type="date" title="Check-in Date">
+                    <input type="date" title="Check-out Date">
+                    <input type="number" placeholder="Add Guests">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+                
+                <div class="share-stay-toggle">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <div class="toggle-label">
+                        <strong>Enable ShareStay</strong>
+                        <span>Split costs and find travel partners</span>
+                    </div>
+                </div>
+
+                <div id="shareStayFilters" class="share-stay-filters">
+                    <h3>Find Your Travel Partner</h3>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="gender-filter">Gender</label>
+                            <select id="gender-filter">
+                                <option>Any</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="age-filter">Age Range</label>
+                            <select id="age-filter">
+                                <option>Any</option>
+                                <option>18-25</option>
+                                <option>26-35</option>
+                                <option>36-45</option>
+                                <option>45+</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="listings-section">
+            <div class="container">
+                <h2>Popular Properties</h2>
+                <div class="listings-grid">
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2000" alt="Modern Villa">
+                        <div class="card-content">
+                            <h3>Modern Villa with Ocean View</h3>
+                            <p class="location">Malibu, California</p>
+                            <div class="price">$450/night</div>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2000" alt="Cozy Cabin">
+                        <div class="card-content">
+                            <h3>Cozy Cabin in the Woods</h3>
+                            <p class="location">Aspen, Colorado</p>
+                            <div class="price">$220/night</div>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000" alt="Urban Apartment">
+                        <div class="card-content">
+                            <h3>Chic Urban Apartment</h3>
+                            <p class="location">New York City, New York</p>
+                            <div class="price">$300/night</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="ai-recommendations">
+            <div class="container">
+                <h2>✨ Just For You</h2>
+                <p class="subtitle">AI-powered recommendations based on your preferences.</p>
+                 <div class="listings-grid">
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000" alt="Downtown Studio">
+                        <div class="card-content">
+                            <h3>Sunny Downtown Studio</h3>
+                            <p class="location">San Francisco, California</p>
+                            <div class="price">$180/night</div>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=2000" alt="Luxury Apartment">
+                        <div class="card-content">
+                            <h3>Lakeside Luxury Apartment</h3>
+                            <p class="location">Lake Como, Italy</p>
+                            <div class="price">$350/night</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 StayNestly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>StayNestly AI Helper</h3>
+                <button class="close-chat-btn" id="closeChatBtn">&times;</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="message bot-message">
+                    <p>Hello! How can I help you find the perfect stay today?</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="userInput" placeholder="Ask a question...">
+                <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="home.js"></script> 
+</body>
+</html>
