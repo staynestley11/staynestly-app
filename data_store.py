@@ -3,10 +3,9 @@ from datetime import datetime
 # This simulates your database data.
 
 USER_DATA = [
-    {"user_id": "U001", "username": "john_doe", "role": "Guest", "status": "Active", "joined_date": "2025-01-15", "email": "john@example.com", "location": "Karachi", "password": "$2b$12$DbmIZ.8.iSIh82fRC6KFz.Fz.tA/1qDE.1r.1r.1r.1rO"},
-    {"user_id": "U002", "username": "host_mary", "role": "Host", "status": "Active", "joined_date": "2025-02-20", "email": "mary@example.com", "location": "Lahore", "password": "$2b$12$DbmIZ.8.iSIh82fRC6KFz.Fz.tA/1qDE.1r.1r.1r.1rO"},
-    {"user_id": "U003", "username": "guest_sam", "role": "Guest", "status": "Banned", "joined_date": "2025-03-01", "email": "sam@example.com", "location": "Islamabad", "password": "$2b$12$DbmIZ.8.iSIh82fRC6KFz.Fz.tA/1qDE.1r.1r.1r.1rO"}
-
+    {"user_id": "U001", "username": "john_doe", "role": "Guest", "status": "Active", "joined_date": "2025-01-15", "email": "john@example.com", "location": "Karachi", "password": "$2b$12$DbmIZ.8.iSIh82fRC6KFzFz.tA/1qDE.1r.1r.1r.1rO"},
+    {"user_id": "U002", "username": "host_mary", "role": "Host", "status": "Active", "joined_date": "2025-02-20", "email": "mary@example.com", "location": "Lahore", "password": "$2b$12$DbmIZ.8.iSIh82fRC6KFzFz.tA/1qDE.1r.1r.1r.1rO"},
+    {"user_id": "U003", "username": "guest_sam", "role": "Guest", "status": "Banned", "joined_date": "2025-03-01", "email": "sam@example.com", "location": "Islamabad", "password": "$2b$12$DbmIZ.8.iSIh82fRC6KFzFz.tA/1qDE.1r.1r.1r.1rO"}
 ]
 
 PROPERTY_DATA = [
@@ -62,3 +61,4 @@ def get_user(email):
         if user.get("email") == email:
             return user
     return None
+
