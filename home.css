@@ -34,6 +34,7 @@ body {
     padding: 15px 40px; 
     background-color: white; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    position: relative; /* <-- This is important for centering */
 }
 .logo { 
     font-size: 1.8em; 
@@ -42,13 +43,17 @@ body {
     text-decoration: none; 
 }
 
-/* Center Nav Links */
+/* Center Nav Links - NEW CENTERING LOGIC */
 .nav-links { 
     display: flex; 
     list-style: none; 
     gap: 30px; 
     margin: 0; 
     padding: 0;
+    /* This new code centers the links perfectly */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .nav-links a { 
     text-decoration: none; 
@@ -78,7 +83,6 @@ body {
     color: #007bff;
 }
 
-
 /* User Profile Dropdown */
 .user-profile { 
     position: relative; 
@@ -97,7 +101,7 @@ body {
     right: 0; 
     background: white; 
     border-radius: 8px; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);s
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
     width: 200px; 
     z-index: 1000; 
     overflow: hidden; 
@@ -126,7 +130,7 @@ body {
     background-color: #e9f5ff; 
     text-align: center;
 }
-.search-section h2 {s
+.search-section h2 { 
     margin-bottom: 20px; 
 }
 .search-bar { 
@@ -199,7 +203,7 @@ body {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-s   transition: .4s;
+    transition: .4s;
     border-radius: 28px;
 }
 .slider:before {
@@ -208,8 +212,8 @@ s   transition: .4s;
     height: 20px;
     width: 20px;
     left: 4px;
-    bottom: 4px;
-s   background-color: white;
+  s bottom: 4px;
+    background-color: white;
     transition: .4s;
     border-radius: 50%;
 }
@@ -225,7 +229,7 @@ input:checked + .slider:before {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-  s transition: max-height 0.5s ease-out, opacity 0.4s ease-out, margin-top 0.5s ease-out;
+    transition: max-height 0.5s ease-out, opacity 0.4s ease-out, margin-top 0.5s ease-out;
     background-color: #fff;
     padding: 0 30px;
     border-radius: 12px;
@@ -240,7 +244,7 @@ input:checked + .slider:before {
     padding: 20px 30px;
 }
 .share-stay-filters h3 {
-    text-align: center;
+s   text-align: center;
     margin-top: 0;
     margin-bottom: 20px;
     font-weight: 600;
@@ -257,7 +261,7 @@ input:checked + .slider:before {
     align-items: flex-start;
 }
 .filter-group label {
-    font-size: 0.9em;
+s   font-size: 0.9em;
     font-weight: 500;
     margin-bottom: 5px;
     color: #555;
@@ -300,7 +304,7 @@ input:checked + .slider:before {
 }
 .property-card:hover { 
     transform: translateY(-8px); 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);s
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);fs
 }
 .property-card img { 
     width: 100%; 
@@ -308,7 +312,7 @@ input:checked + .slider:before {
     object-fit: cover; 
 }
 .card-content { 
-s   padding: 20px; 
+    padding: 20px; 
 }
 .card-content h3 { 
     margin: 0 0 10px 0; 
@@ -332,7 +336,7 @@ s   padding: 20px; 
 .footer { 
     background-color: #343a40; 
     color: white; 
-    text-align: center; 
+s   text-align: center; 
     padding: 20px 0; 
 }
 
@@ -347,16 +351,16 @@ s   padding: 20px; 
 .chat-icon {
     width: 60px;
     height: 60px;
-    background-color: #007bff;
-s   color: white;
+s   background-color: #007bff;
+    color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-i   font-size: 1.8em;
+    font-size: 1.8em;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
-    transition: transform 0.3s ease;
+s   transition: transform 0.3s ease;
 }
 
 .chat-icon:hover {
@@ -381,7 +385,7 @@ i   font-size: 1.8em;
 }
 
 .chat-window.open {
-    transform: scale(1);
+s   transform: scale(1);
 }
 
 .chat-header {
@@ -401,13 +405,13 @@ i   font-size: 1.8em;
 .close-chat-btn {
     background: none;
     border: none;
-s   color: white;
+    color: white;
     font-size: 1.5em;
     cursor: pointer;
 }
 
 .chat-body {
-    flex-grow: 1;
+s   flex-grow: 1;
     padding: 15px;
     overflow-y: auto;
     display: flex;
@@ -423,12 +427,12 @@ s   color: white;
 }
 
 .message p {
-    margin: 0;
+s   margin: 0;
 }
 
 .user-message {
 s   background-color: #f0f2f5;
-    color: #333;
+  s color: #333;
     align-self: flex-end;
     border-bottom-right-radius: 4px;
 }
@@ -441,7 +445,7 @@ s   background-color: #f0f2f5;
 }
 
 .typing-indicator {
-s   align-self: flex-start;
+    align-self: flex-start;
     color: #666;
     font-style: italic;
     font-size: 0.9em;
@@ -449,13 +453,13 @@ s   align-self: flex-start;
 
 .chat-footer {
     display: flex;
-    padding: 10px;
+  s padding: 10px;
     border-top: 1px solid #eee;
 }
 
 .chat-footer input {
     flex-grow: 1;
-s   border: none;
+    border: none;
     padding: 10px;
     outline: none;
     font-size: 1em;
@@ -464,8 +468,8 @@ s   border: none;
 .chat-footer button {
     background: none;
     border: none;
-    color: #007bff;
+s   color: #007bff;
     font-size: 1.2em;
     cursor: pointer;
-s   padding: 0 10px;
+    padding: 0 10px;
 }
