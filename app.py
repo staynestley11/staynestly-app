@@ -38,7 +38,7 @@ def api_signup():
     # 4 spaces of indentation
     hashed_password = pwd_context.hash(password[:72])
     
-    # 4 spaces of indentation (THIS WAS YOUR ERROR LINE)
+    # 4 spaces of indentation
     user = data_store.create_user(email, hashed_password)
     if user:
         return jsonify({"success": True, "email": user["email"]}), 201
