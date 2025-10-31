@@ -1,345 +1,471 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Home - StayNestly</title>
-
-    <link rel="stylesheet" href="home.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-</head>
-
-<body>
-
-
-
-    <header>
-
-        <nav class="navbar">
-
-            <a href="home.html" class="logo">StayNestly</a>
-
-            <ul class="nav-links">
-
-                <li><a href="explore.html">Explore</a></li>
-
-                <li><a href="mybooking.html">My Bookings</a></li>
-
-                <li><a href="login.html">Log In</a></li>
-
-                <li><a href="signup.html">Sign Up</a></li>
-
-            </ul>
-
-            <div class="user-profile" id="userProfileMenu">
-
-                <a href="profile.html">
-
-                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar">
-
-                </a>
-
-                <div class="dropdown-menu" id="dropdownMenu">
-
-                    <a href="profile.html">Profile</a>
-
-                    <a href="profile.html">Account Settings</a>
-
-                    <div class="divider"></div>
-
-                    <a href="index.html">Logout</a>
-
-                </div>
-
-            </div>
-
-        </nav>
-
-    </header>
-
-
-
-    <main>
-
-        <section class="search-section">
-
-            <div class="container">
-
-                <h2>Where to next?</h2>
-
-                <div class="search-bar">
-
-                    <input type="text" placeholder="Search destinations">
-
-                    <input type="date" title="Check-in Date">
-
-                    <input type="date" title="Check-out Date">
-
-                    <input type="number" placeholder="Add Guests">
-
-                    <button class="btn btn-primary">Search</button>
-
-                </div>
-
-                
-
-                <div class="share-stay-toggle">
-
-                    <label class="switch">
-
-                        <input type="checkbox">
-
-                        <span class="slider"></span>
-
-                    </label>
-
-                    <div class="toggle-label">
-
-                        <strong>Enable ShareStay</strong>
-
-                        <span>Split costs and find travel partners</span>
-
-                    </div>
-
-                </div>
-
-
-
-                <div id="shareStayFilters" class="share-stay-filters">
-
-                    <h3>Find Your Travel Partner</h3>
-
-                    <div class="filters">
-
-                        <div class="filter-group">
-
-                            <label for="gender-filter">Gender</label>
-
-                            <select id="gender-filter">
-
-                                <option>Any</option>
-
-                                <option>Female</option>
-
-                                <option>Male</option>
-
-                            </select>
-
-                        </div>
-
-                        <div class="filter-group">
-
-                            <label for="age-filter">Age Range</label>
-
-                            <select id="age-filter">
-
-                                <option>Any</option>
-
-                                <option>18-25</option>
-
-                                <option>26-35</option>
-
-                                <option>36-45</option>
-
-                                <option>45+</option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <section class="listings-section">
-
-            <div class="container">
-
-                <h2>Popular Properties</h2>
-
-                <div class="listings-grid">
-
-                    <div class="property-card">
-
-                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2000" alt="Modern Villa">
-
-                        <div class="card-content">
-
-                            <h3>Modern Villa with Ocean View</h3>
-
-                            <p class="location">Malibu, California</p>
-
-                            <div class="price">$450/night</div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="property-card">
-
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2000" alt="Cozy Cabin">
-
-                        <div class="card-content">
-
-                            <h3>Cozy Cabin in the Woods</h3>
-
-                            <p class="location">Aspen, Colorado</p>
-
-                            <div class="price">$220/night</div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="property-card">
-
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000" alt="Urban Apartment">
-
-                        <div class="card-content">
-
-                            <h3>Chic Urban Apartment</h3>
-
-                            <p class="location">New York City, New York</p>
-
-                            <div class="price">$300/night</div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        
-
-        <section class="ai-recommendations">
-
-            <div class="container">
-
-                <h2>✨ Just For You</h2>
-
-                <p class="subtitle">AI-powered recommendations based on your preferences.</p>
-
-                 <div class="listings-grid">
-
-                    <div class="property-card">
-
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000" alt="Downtown Studio">
-
-                        <div class="card-content">
-
-                            <h3>Sunny Downtown Studio</h3>
-
-                            <p class="location">San Francisco, California</p>
-
-                            <div class="price">$180/night</div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="property-card">
-
-                        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=2000" alt="Luxury Apartment">
-
-                        <div class="card-content">
-
-                            <h3>Lakeside Luxury Apartment</h3>
-
-                            <p class="location">Lake Como, Italy</p>
-
-                            <div class="price">$350/night</div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <p>&copy; 2025 StayNestly. All rights reserved.</p>
-
-        </div>
-
-    </footer>
-
-
-
-    <div class="chatbot-container">
-
-        <div class="chat-icon" id="chatIcon">
-
-            <i class="fas fa-comment-dots"></i>
-
-        </div>
-
-        <div class="chat-window" id="chatWindow">
-
-            <div class="chat-header">
-
-                <h3>StayNestly AI Helper</h3>
-
-                <button class="close-chat-btn" id="closeChatBtn">&times;</button>
-
-            </div>
-
-            <div class="chat-body" id="chatBody">
-
-                <div class="message bot-message">
-
-                    <p>Hello! How can I help you find the perfect stay today?</p>
-
-                </div>
-
-            </div>
-
-            <div class="chat-footer">
-
-                <input type="text" id="userInput" placeholder="Ask a question...">
-
-                <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    
-
-    <script src="home.js"></script> 
-
-</body>
-
-
-
-</html>
+/* General Body & Font Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.btn { 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+.btn-primary { 
+    background-color: #007bff; 
+    color: white; 
+}
+.btn-primary:hover { 
+    background-color: #0056b3; 
+}
+
+/* Header & Navbar */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 40px; 
+    background-color: white; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+}
+.logo { 
+    font-size: 1.8em; 
+    font-weight: 700; 
+    color: #007bff; 
+    text-decoration: none; 
+}
+
+/* Center Nav Links */
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 30px; 
+    margin: 0; 
+    padding: 0;
+}
+.nav-links a { 
+    text-decoration: none; 
+    color: #555; 
+    font-weight: 600; 
+    transition: color 0.3s; 
+}
+.nav-links a:hover { 
+    color: #007bff; 
+}
+
+/* NEW: Right-side group (Log In, Sign Up, Icon) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Matches the .nav-links gap */
+}
+
+/* NEW: Styles for "Log In" and "Sign Up" links */
+.nav-auth-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.nav-auth-link:hover {
+    color: #007bff;
+}
+
+
+/* User Profile Dropdown */
+.user-profile { 
+    position: relative; 
+    cursor: pointer; 
+}
+.user-profile img { 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    border: 2px solid #eee; 
+}
+.dropdown-menu { 
+    display: none; 
+    position: absolute; 
+    top: 120%; 
+    right: 0; 
+    background: white; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);s
+    width: 200px; 
+    z-index: 1000; 
+    overflow: hidden; 
+}
+.dropdown-menu.show { 
+    display: block; 
+}
+.dropdown-menu a { 
+    display: block; 
+    padding: 12px 20px; 
+    text-decoration: none; 
+    color: #333; 
+    font-size: 0.95em; 
+}
+.dropdown-menu a:hover { 
+    background-color: #f8f9fa; 
+}
+.dropdown-menu .divider { 
+    border-top: 1px solid #eee; 
+    margin: 5px 0; 
+}
+
+/* Search Section */
+.search-section { 
+    padding: 40px 0; 
+    background-color: #e9f5ff; 
+    text-align: center;
+}
+.search-section h2 {s
+    margin-bottom: 20px; 
+}
+.search-bar { 
+    display: flex;
+    flex-wrap: wrap;
+    background: white; 
+    padding: 10px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+    gap: 10px; 
+    justify-content: center; 
+    max-width: 900px;
+    margin: 0 auto;
+}
+.search-bar input { 
+    border: none; 
+    padding: 10px 15px; 
+    font-size: 1em; 
+    outline: none; 
+    border-radius: 6px; 
+    border: 1px solid transparent;
+}
+.search-bar input:focus {
+    border: 1px solid #007bff;
+}
+.search-bar input[type="text"] { 
+    flex-grow: 2; 
+    min-width: 200px;
+}
+.search-bar input[type="number"] { 
+    width: 120px; 
+}
+
+/* ShareStay Toggle Switch Styles */
+.share-stay-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 15px;
+}
+.toggle-label {
+    text-align: left;
+}
+.toggle-label strong {
+    display: block;
+    font-weight: 600;
+    color: #333;
+}
+.toggle-label span {
+    font-size: 0.9em;
+    color: #666;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+s   transition: .4s;
+    border-radius: 28px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+s   background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #007bff;
+}
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* ShareStay Filters Section */
+.share-stay-filters {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  s transition: max-height 0.5s ease-out, opacity 0.4s ease-out, margin-top 0.5s ease-out;
+    background-color: #fff;
+    padding: 0 30px;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.share-stay-filters.visible {
+    max-height: 200px; /* Adjust if content is taller */
+    opacity: 1;
+    margin-top: 20px;
+    padding: 20px 30px;
+}
+.share-stay-filters h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.share-stay-filters .filters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.filter-group label {
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #555;
+}
+.filter-group select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    min-width: 150px;
+}
+
+
+/* Listings Sections (Popular & AI) */
+.listings-section { 
+    padding: 50px 0; 
+}
+.listings-section h2, .ai-recommendations h2 { 
+    text-align: center; 
+    font-size: 2.2em; 
+    margin-bottom: 10px; 
+}
+.ai-recommendations .subtitle { 
+    text-align: center; 
+    color: #666; 
+    margin-top: 0; 
+    margin-bottom: 40px; 
+}
+.listings-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+}
+.property-card { 
+    background: white; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+    overflow: hidden; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.property-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);s
+}
+.property-card img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+}
+.card-content { 
+s   padding: 20px; 
+}
+.card-content h3 { 
+    margin: 0 0 10px 0; 
+    font-size: 1.3em; 
+}
+.card-content .location { 
+    color: #777; 
+    margin-bottom: 15px; 
+}
+.card-content .price { 
+    font-size: 1.2em; 
+    font-weight: 700; 
+    color: #007bff; 
+}
+.ai-recommendations { 
+    background-color: #fff; 
+    padding: 50px 0; 
+}
+
+/* Footer */
+.footer { 
+    background-color: #343a40; 
+    color: white; 
+    text-align: center; 
+    padding: 20px 0; 
+}
+
+/* --- AI CHATBOT STYLES --- */
+.chatbot-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.chat-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+s   color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+i   font-size: 1.8em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.chat-icon:hover {
+    transform: scale(1.1);
+}
+
+.chat-window {
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.chat-window.open {
+    transform: scale(1);
+}
+
+.chat-header {
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+s   color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    line-height: 1.4;
+}
+
+.message p {
+    margin: 0;
+}
+
+.user-message {
+s   background-color: #f0f2f5;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.typing-indicator {
+s   align-self: flex-start;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+s   border: none;
+    padding: 10px;
+    outline: none;
+    font-size: 1em;
+}
+
+.chat-footer button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1.2em;
+    cursor: pointer;
+s   padding: 0 10px;
+}
