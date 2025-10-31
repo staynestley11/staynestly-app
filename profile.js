@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Find the input fields by their ID
         const fullNameInput = document.getElementById('fullName');
-        const emailInput = document.getElementById('emailAddress'); // Make sure this ID is in your HTML
+        
+        // --- THIS IS THE CORRECTED LINE ---
+        const emailInput = document.getElementById('email'); // Matches your HTML
 
         // Fill the fields with the user's real data
         if (fullNameInput) {
