@@ -1,4 +1,6 @@
 Flask
 gunicorn
 Flask-CORS
-passlib[bcrypt]
+passlib
+bcrypt
+cffi
