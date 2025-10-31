@@ -35,7 +35,8 @@ def api_signup():
         return jsonify({"error": "User already exists"}), 400
 
     # Hash the password before storing it (and cut it to 72 chars)
-hashed_password = pwd_context.hash(password[:72])
+    # THIS LINE IS NOW FIXED (it has 4 spaces at the start)
+    hashed_password = pwd_context.hash(password[:72])
     
     # Create the user in data_store
     user = data_store.create_user(email, hashed_password)
@@ -86,4 +87,3 @@ if __name__ == '__main__':
     print("Starting StayNestly app (Frontend & Backend) on http://127.0.0.1:5000")
     # Set host to '0.0.0.0' to be accessible on your network
     app.run(debug=True, host='0.0.0.0', port=5000)
-
