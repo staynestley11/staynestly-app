@@ -1,81 +1,80 @@
-document.addEventListener('DOMContentLoaded', () => {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management - StayNestly</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 
-    // --- NEW: LOAD USER DATA FROM STORAGE ---
-    const userString = localStorage.getItem('staynestly_user');
+    <header>
+        <nav class="navbar">
+            <a href="home.html" class="logo">StayNestly</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Explore</a></li>
+                <li><a href="mybooking.html">My Bookings</a></li>
+                <li><a href="host-dashboard.html">Switch to Host</a></li>
+            </ul>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar">
+            </div>
+        </nav>
+    </header>
 
-    if (userString) {
-        const user = JSON.parse(userString);
-        
-        // Find the input fields by their ID
-        const fullNameInput = document.getElementById('fullName');
-        
-        // --- THIS IS THE CORRECTED LINE ---
-        const emailInput = document.getElementById('email'); // Was 'emailAddress'
+    <main class="container">
+        <div class="profile-header">
+            <h1>Account Settings</h1>
+            <p>Manage your profile, password, and account information.</p>
+        </div>
 
-        // Fill the fields with the user's real data
-        if (fullNameInput) {
-            fullNameInput.value = user.username; // Use username as Full Name
-        }
-        if (emailInput) {
-            emailInput.value = user.email;
-        }
+        <div class="profile-card">
+            <div class="profile-picture-section">
+                <div class="avatar-upload">
+                    <div class="avatar-preview">
+                        <img id="profileImage" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar">
+                        <div class="avatar-edit">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+                <button id="removePhotoBtn" class="remove-photo-btn">Remove Photo</button>
+                <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" style="display: none;">
+            </div>
 
-    } else {
-        // No user is logged in. Kick them back to the login page.
-        alert("You must be logged in to see this page.");
-        window.location.href = 'login.html';
-    }
-    // --- END OF NEW CODE ---
-
-
-    // --- YOUR EXISTING ADVANCED PROFILE PICTURE LOGIC ---
-    const avatarUpload = document.querySelector('.avatar-upload');
-    const imageUploadInput = document.getElementById('imageUpload');
-    const profileImage = document.getElementById('profileImage');
-    const removePhotoBtn = document.getElementById('removePhotoBtn');
-    const defaultAvatar = 'https://i.pravatar.cc/150?u=a042581f4e29026704d'; // Default image URL
-
-    // 1. Trigger file selection when the user clicks the avatar
-    if (avatarUpload) {
-        avatarUpload.addEventListener('click', () => {
-            imageUploadInput.click(); // This opens the file dialog
-        });
-    }
-
-    // 2. Handle the instant preview when a new file is chosen
-    if (imageUploadInput) {
-        imageUploadInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    // Set the image source to the newly selected file
-                    profileImage.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
+            <div class="profile-info-section">
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" value="john.doe@example.com" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" value="+1 123-456-7890">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
     
-    // 3. Handle removing the photo
-    if (removePhotoBtn) {
-        removePhotoBtn.addEventListener('click', () => {
-            profileImage.src = defaultAvatar;
-            // It's good practice to clear the file input as well
-            imageUploadInput.value = ""; 
-            alert('Photo removed. Click "Save Changes" to confirm.');
-        });
-    }
-
-
-    // --- YOUR EXISTING SAVE CHANGES LOGIC ---
-    const profileForm = document.getElementById('profileForm');
-    if (profileForm) {
-        profileForm.addEventListener('submit', (e) => {
-            e.preventDefault(); 
-            const fullName = document.getElementById('fullName').value;
-            alert(`Profile for ${fullName} has been updated successfully!`);
-        });
-    }
-
-});
+    <script src="profile.js"></script>
+</body>
+</html>
