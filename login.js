@@ -44,13 +44,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (response.ok) {
-            showMessage("Login successful! Redirecting...", "success");
-            // Redirect to home page after 2 seconds
-            setTimeout(() => {
-                window.location.href = "/"; // Redirect to your home page
-            }, 2000);
-        } else {
+        // 'result' now contains: {"success": True, "user": {...}}
+        
+        // --- THIS IS THE NEW LINE ---
+        localStorage.setItem('staynestly_user', JSON.stringify(result.user));
+        
+        showMessage("Login successful! Redirecting...", "success");
+        
+        // Redirect to home page after 2 seconds
+        setTimeout(() => {
+            window.location.href = "/home.html"; // Go to home.html
+        }, 2000);
+    } else {
             showMessage(`Error: ${result.error}`, "error");
         }
     });
 });
+
