@@ -52,18 +52,18 @@ def api_login():
 
     user = data_store.get_user(email)
 
-    # --- THIS IS THE LINE I FIXED ---
-    # It now checks password[:72] just like the signup function
     if user and pwd_context.verify(password[:72], user["password"]):
-        # Login successful! Send back the user's info.
-user_info = {
-    "email": user.get("email"),
-    "username": user.get("username"),
-    "role": user.get("role"),
-    "location": user.get("location")
-}
-return jsonify({"success": True, "user": user_info}), 200
+        # --- THIS BLOCK IS NOW CORRECTLY INDENTED ---
+        # (It has 8 spaces at the start)
+        user_info = {
+            "email": user.get("email"),
+            "username": user.get("username"),
+            "role": user.get("role"),
+            "location": user.get("location")
+        }
+        return jsonify({"success": True, "user": user_info}), 200
     else:
+        # Invalid credentials
         return jsonify({"error": "Invalid email or password"}), 401
 
 # --- Existing Code ---
@@ -85,4 +85,3 @@ def serve_index():
 if __name__ == '__main__':
     print("Starting StayNestly app (Frontend & Backend) on http://127.0.0.1:5000")
     app.run(debug=True, host='0.0.0.0', port=5000)
-
