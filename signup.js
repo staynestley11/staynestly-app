@@ -1,29 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const guestBtn = document.getElementById('guestBtn');
-    const hostBtn = document.getElementById('hostBtn');
-    const guestSignup = document.getElementById('guestSignup');
-    const hostSignup = document.getElementById('hostSignup');
+document.addEventListener("DOMContentLoaded", () => {
+    // Make sure your form in signup.html has: id="signup-form"
+    const signupForm = document.getElementById("signup-form"); 
+    
+    // Make sure you add <div id="message"></div> to your signup.html
+    const messageEl = document.getElementById("message");
 
-    // Function to switch forms
-    const switchForms = (activeBtn, inactiveBtn, activeForm, inactiveForm) => {
-        // Update button styles
-        activeBtn.classList.add('active');
-        inactiveBtn.classList.remove('active');
+    signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Stop the form from submitting normally
 
-        // Hide the currently active form
-        inactiveForm.classList.remove('active');
+        // Make sure your inputs in signup.html have: id="email" and id="password"
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
         
-        // After a brief delay for the fade-out effect, show the new form
-        setTimeout(() => {
-            activeForm.classList.add('active');
-        }, 50); // A small delay is enough to trigger the transition
-    };
+        messageEl.textContent = "Creating account...";
+        messageEl.style.color = "black";
 
-    guestBtn.addEventListener('click', () => {
-        switchForms(guestBtn, hostBtn, guestSignup, hostSignup);
-    });
+        const response = await fetch("/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
 
-    hostBtn.addEventListener('click', () => {
-        switchForms(hostBtn, guestBtn, hostSignup, guestSignup);
+        const result = await response.json();
+
+        if (response.ok) {
+            messageEl.textContent = "Signup successful! Redirecting to login...";
+            messageEl.style.color = "green";
+            // Redirect to login page after 2 seconds
+            setTimeout(() => {
+                window.location.href = "/login.html"; //
+            }, 2000);
+        } else {
+            messageEl.textContent = `Error: ${result.error}`;
+            messageEl.style.color = "red";
+        }
     });
 });
