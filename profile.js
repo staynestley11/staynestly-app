@@ -1,5 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- ADVANCED PROFILE PICTURE LOGIC ---
+
+    // --- NEW: LOAD USER DATA FROM STORAGE ---
+    const userString = localStorage.getItem('staynestly_user');
+
+    if (userString) {
+        const user = JSON.parse(userString);
+        
+        // Find the input fields by their ID
+        const fullNameInput = document.getElementById('fullName');
+        const emailInput = document.getElementById('emailAddress'); // Make sure this ID is in your HTML
+
+        // Fill the fields with the user's real data
+        if (fullNameInput) {
+            fullNameInput.value = user.username; // Use username as Full Name
+        }
+        if (emailInput) {
+            emailInput.value = user.email;
+        }
+
+    } else {
+        // No user is logged in. Kick them back to the login page.
+        alert("You must be logged in to see this page.");
+        window.location.href = 'login.html';
+    }
+    // --- END OF NEW CODE ---
+
+
+    // --- YOUR EXISTING ADVANCED PROFILE PICTURE LOGIC ---
     const avatarUpload = document.querySelector('.avatar-upload');
     const imageUploadInput = document.getElementById('imageUpload');
     const profileImage = document.getElementById('profileImage');
@@ -7,37 +34,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultAvatar = 'https://i.pravatar.cc/150?u=a042581f4e29026704d'; // Default image URL
 
     // 1. Trigger file selection when the user clicks the avatar
-    avatarUpload.addEventListener('click', () => {
-        imageUploadInput.click(); // This opens the file dialog
-    });
+    if (avatarUpload) {
+        avatarUpload.addEventListener('click', () => {
+            imageUploadInput.click(); // This opens the file dialog
+        });
+    }
 
     // 2. Handle the instant preview when a new file is chosen
-    imageUploadInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                // Set the image source to the newly selected file
-                profileImage.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+    if (imageUploadInput) {
+        imageUploadInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    // Set the image source to the newly selected file
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
     
     // 3. Handle removing the photo
-    removePhotoBtn.addEventListener('click', () => {
-        profileImage.src = defaultAvatar;
-        // It's good practice to clear the file input as well
-        imageUploadInput.value = ""; 
-        alert('Photo removed. Click "Save Changes" to confirm.');
-    });
+    if (removePhotoBtn) {
+        removePhotoBtn.addEventListener('click', () => {
+            profileImage.src = defaultAvatar;
+            // It's good practice to clear the file input as well
+            imageUploadInput.value = ""; 
+            alert('Photo removed. Click "Save Changes" to confirm.');
+        });
+    }
 
 
-    // --- ORIGINAL SAVE CHANGES LOGIC ---
+    // --- YOUR EXISTING SAVE CHANGES LOGIC ---
     const profileForm = document.getElementById('profileForm');
-    profileForm.addEventListener('submit', (e) => {
-        e.preventDefault(); 
-        const fullName = document.getElementById('fullName').value;
-        alert(`Profile for ${fullName} has been updated successfully!`);
-    });
+    if (profileForm) {
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            const fullName = document.getElementById('fullName').value;
+            alert(`Profile for ${fullName} has been updated successfully!`);
+        });
+    }
+
 });
