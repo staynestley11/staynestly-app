@@ -34,7 +34,6 @@ def api_signup():
         return jsonify({"error": "User already exists"}), 400
 
     hashed_password = pwd_context.hash(password[:72])
-    
     user = data_store.create_user(email, hashed_password)
     if user:
         return jsonify({"success": True, "email": user["email"]}), 201
@@ -77,3 +76,4 @@ def serve_index():
 if __name__ == '__main__':
     print("Starting StayNestly app (Frontend & Backend) on http://127.0.0.1:5000")
     app.run(debug=True, host='0.0.0.0', port=5000)
+
