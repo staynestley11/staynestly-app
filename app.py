@@ -57,8 +57,9 @@ def api_login():
 
     user = data_store.get_user(email)
 
-    # Check if user exists AND the password is correct
-    if user and pwd_context.verify(password, user["password"]):
+    # --- THIS IS THE LINE I FIXED ---
+    # Check if user exists AND the password is correct (and cut it to 72 chars)
+    if user and pwd_context.verify(password[:72], user["password"]):
         # Login successful!
         return jsonify({"success": True, "message": "Login successful"}), 200
     else:
