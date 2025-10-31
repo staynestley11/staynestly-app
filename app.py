@@ -55,7 +55,14 @@ def api_login():
     # --- THIS IS THE LINE I FIXED ---
     # It now checks password[:72] just like the signup function
     if user and pwd_context.verify(password[:72], user["password"]):
-        return jsonify({"success": True, "message": "Login successful"}), 200
+        # Login successful! Send back the user's info.
+user_info = {
+    "email": user.get("email"),
+    "username": user.get("username"),
+    "role": user.get("role"),
+    "location": user.get("location")
+}
+return jsonify({"success": True, "user": user_info}), 200
     else:
         return jsonify({"error": "Invalid email or password"}), 401
 
@@ -78,3 +85,4 @@ def serve_index():
 if __name__ == '__main__':
     print("Starting StayNestly app (Frontend & Backend) on http://127.0.0.1:5000")
     app.run(debug=True, host='0.0.0.0', port=5000)
+
