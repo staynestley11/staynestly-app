@@ -23,7 +23,6 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # --- NEW: SIGNUP API ROUTE ---
 @app.route("/api/signup", methods=["POST"])
 def api_signup():
-    # This line and all lines below it MUST have 4 spaces
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
@@ -34,10 +33,8 @@ def api_signup():
     if data_store.get_user(email):
         return jsonify({"error": "User already exists"}), 400
 
-    # This line MUST have 4 spaces
     hashed_password = pwd_context.hash(password[:72])
     
-    # This line MUST have 4 spaces
     user = data_store.create_user(email, hashed_password)
     if user:
         return jsonify({"success": True, "email": user["email"]}), 201
@@ -47,7 +44,6 @@ def api_signup():
 # --- NEW: LOGIN API ROUTE ---
 @app.route("/api/login", methods=["POST"])
 def api_login():
-    # All lines in here MUST have 4 spaces
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
