@@ -23,6 +23,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # --- NEW: SIGNUP API ROUTE ---
 @app.route("/api/signup", methods=["POST"])
 def api_signup():
+    # 4 spaces of indentation
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
@@ -30,15 +31,14 @@ def api_signup():
     if not email or not password:
         return jsonify({"error": "Email and password are required"}), 400
 
-    # Check if user already exists
+    # 4 spaces of indentation
     if data_store.get_user(email):
         return jsonify({"error": "User already exists"}), 400
 
-    # Hash the password before storing it (and cut it to 72 chars)
-    # THIS LINE IS NOW FIXED (it has 4 spaces at the start)
+    # 4 spaces of indentation
     hashed_password = pwd_context.hash(password[:72])
     
-    # Create the user in data_store
+    # 4 spaces of indentation (THIS WAS YOUR ERROR LINE)
     user = data_store.create_user(email, hashed_password)
     if user:
         return jsonify({"success": True, "email": user["email"]}), 201
@@ -48,6 +48,7 @@ def api_signup():
 # --- NEW: LOGIN API ROUTE ---
 @app.route("/api/login", methods=["POST"])
 def api_login():
+    # 4 spaces of indentation
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
@@ -55,15 +56,13 @@ def api_login():
     if not email or not password:
         return jsonify({"error": "Email and password are required"}), 400
 
+    # 4 spaces of indentation
     user = data_store.get_user(email)
 
-    # --- THIS IS THE LINE I FIXED ---
-    # Check if user exists AND the password is correct (and cut it to 72 chars)
+    # 4 spaces of indentation
     if user and pwd_context.verify(password[:72], user["password"]):
-        # Login successful!
         return jsonify({"success": True, "message": "Login successful"}), 200
     else:
-        # Invalid credentials
         return jsonify({"error": "Invalid email or password"}), 401
 
 # --- Existing Code ---
@@ -73,18 +72,15 @@ app.register_blueprint(admin_bp)
 app.register_blueprint(main_bp)
 
 # --- Route to Serve Frontend Files ---
-# Since all files are in the root, this is a catch-all to serve them if needed.
 @app.route('/<path:filename>')
 def serve_static(filename):
-    # This serves HTML, CSS, JS files directly from the 'staynestly' root folder
     return send_from_directory(app.static_folder, filename)
 
-# Main entry point (e.g., serving dashboard.html if accessed directly)
+# Main entry point
 @app.route('/')
 def serve_index():
-    return send_from_directory(app.static_folder, 'home.html') # Assuming dashboard is the main entry
+    return send_from_directory(app.static_folder, 'home.html')
 
 if __name__ == '__main__':
     print("Starting StayNestly app (Frontend & Backend) on http://127.0.0.1:5000")
-    # Set host to '0.0.0.0' to be accessible on your network
     app.run(debug=True, host='0.0.0.0', port=5000)
